@@ -161,7 +161,7 @@ router.get('/myacceptedrequests/:tutorusername', function ( req, res, next){
 })
 ////////////////////////////////////////////////////////////////////////////////
 router.get("/unreadrequests/:tutoreeusername", function (req, res, next){
-  db.collection('tutoree').count({read:false, type: "Completed"}, function(error, numOfDocs){
+  db.collection('tutoree').count({tutoreeusername : req.params.tutoreeusername,read:false, type: "Completed"}, function(error, numOfDocs){
     if(error) res.send(error);
     res.json(numOfDocs)
   })
