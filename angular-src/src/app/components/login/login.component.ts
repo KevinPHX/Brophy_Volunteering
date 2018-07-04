@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
-
+import{DataService} from "../../data.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
     private authService:AuthService,
     private router:Router,
     private flashMessage:FlashMessagesService,
+    private dataService: DataService,
+
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,15 @@ export class LoginComponent implements OnInit {
           timeout:5000
         });
         this.router.navigate(['/dashboard'])
+        this.dataService.unreadRequests(this.username).subscribe(data => {
+          this.flashMessage.show("You have " + data + " accepted requests. You can see them in My Past Requests",{
+            cssClass: "alert-info",
+            timeout:5000
+          })
+        })
+
+
+
       } else {
         this.flashMessage.show(data.msg,{
           cssClass: "alert-danger",

@@ -29,7 +29,7 @@ nev.configure({
     transportOptions: {
         service: 'Gmail',
         auth: {
-            user: ' brophy.carpool.sign.up@gmail.com',
+            user: 'brophy.volunteering.sign.up@gmail.com',
             pass: 'Whatever2018'
         }
     },
@@ -161,7 +161,7 @@ router.get('/myacceptedrequests/:tutorusername', function ( req, res, next){
 })
 ////////////////////////////////////////////////////////////////////////////////
 router.get("/unreadrequests/:tutoreeusername", function (req, res, next){
-  db.collection('tutoree').count({read:false}, function(error, numOfDocs){
+  db.collection('tutoree').count({read:false, type: "Completed"}, function(error, numOfDocs){
     if(error) res.send(error);
     res.json(numOfDocs)
   })
@@ -276,8 +276,8 @@ router.post('/accept/:tutoreeusername/:email', function ( req, res, next){
   var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'kevinyin2013@gmail.com',
-    pass: 'lukeskywalker1977'
+    user: 'brophy.tutoring.requests@gmail.com',
+    pass: 'Whatever2018'
   }
   });
   Tutoree.findOne({tutoreeusername: req.params.tutoreeusername, type: "Pending"}, function(err, tutoree) {
@@ -330,7 +330,7 @@ router.post('/accept/:tutoreeusername/:email', function ( req, res, next){
 
 
                     var mailOptions = {
-                      from: 'kevinyin2013@gmail.com',
+                      from: 'brophy.tutoring.requests@gmail.com',
                       to: tutoree.tutoreeemail,
                       subject: 'Tutoree Confirmation Email',
                       text: "Your tutor will be " + tutor.firstname + " " + tutor.lastname + ". The phone number is " + tutor.phonenumber + ", and the email is " + tutor.email
@@ -346,7 +346,7 @@ router.post('/accept/:tutoreeusername/:email', function ( req, res, next){
 
 
                     var mailOptions1 = {
-                      from: 'kevinyin2013@gmail.com',
+                      from: 'brophy.tutoring.requests@gmail.com',
                       to: tutor.email,
                       subject: 'Tutor Confirmation Email',
                       text: "Your tutoree will be " + tutoree.tutoreename + ". The phone number is " + tutoree.tutoreephonenumber + ", and the email is " + tutoree.tutoreeemail + ". The subject and topic " + tutoree.tutoreename + " needs help on are " + tutoree.subject + " and " + tutoree.topic
@@ -504,14 +504,14 @@ console.log('step 1')
       var smtpTrans = nodemailer.createTransport({
          service: 'Gmail',
          auth: {
-          user: 'carpoolpassreset@gmail.com',
-          pass: 'carpool2018'
+          user: 'brophy.tutoring.passreset@gmail.com',
+          pass: 'Whatever2018'
         }
       });
       var mailOptions = {
 
         to: user.email,
-        from: 'carpoolpassreset@gmail.com',
+        from: 'brophy.tutoring.passreset@gmail.com',
         subject: 'Brophy Tutoring Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -608,13 +608,13 @@ user.save(function(err) {
       var smtpTrans = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'carpoolpassreset@gmail.com',
-          pass: 'carpool2018'
+          user: 'brophy.tutoring.passreset@gmail.com',
+          pass: 'Whatever2018'
         }
       });
       var mailOptions = {
         to: user.email,
-        from: 'carpoolpassreset@gmail.com',
+        from: 'brophy.tutoring.passreset@gmail.com',
         subject: 'Your password has been changed',
         text: 'Hello,\n\n' +
           ' - This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
