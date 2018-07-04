@@ -1,0 +1,60 @@
+<div ng-controller="ngOnInit">
+<div *ngIf='user'>
+<h2 class='page-header'>Update</h2>
+<form (submit)='onUpdateSubmit()'>
+<div class = 'col-xs-12'>
+  <div class='form-group'>
+    <label>Brophy or Xavier</label><br>
+    <input type='radio' [(ngModel)]='school' name='brophy' value='Brophy' class="form-check" >   Brophy
+    <input type='radio' [(ngModel)]='school' name='xavier' value='Xavier' class="form-check">   Xavier
+  </div>
+</div>
+<br><br>
+<div class = 'col-xs-5'>
+  <div class='form-group'>
+    <label>First Name</label>
+    <input type='text' [(ngModel)]='firstname' name='firstname' class="form-control"  >
+  </div>
+</div>
+<div class = 'col-xs-5'>
+  <div class='form-group'>
+    <label>Last Name</label>
+    <input type='text' [(ngModel)]='lastname' name='lastname' class="form-control" >
+  </div>
+</div>
+<div class = 'col-xs-2'>
+  <div class='form-group'>
+    <label>Grade</label>
+    <select [(ngModel)]='grade' name='grade' class="form-control">
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+    <!-- <input type= 'text' [(ngModel)]='grade' name='grade' class='form-control' > -->
+  </div>
+</div>
+<br><br>
+<div class = 'col-xs-6'>
+<div class='form-group'>
+  <label>Phone Number</label>
+  <input type='text' [(ngModel)]='phonenumber' name='phonenumber' class="form-control" >
+</div>
+</div>
+<div class = 'col-xs-6'>
+<div class='form-group'>
+  <label>Email</label>
+  <input type= 'text' [(ngModel)]='email' name='email' class='form-control' >
+</div>
+</div>
+<br><br>
+<div class = 'col-xs-12'>
+  <div class='form-group'>
+    <label>Username</label>
+    <input type= 'text' [(ngModel)]='username' name='username' class='form-control' >
+  </div>
+</div>
+
+
+
+  <input type='submit' class = 'btn btn-primary' value='Submit' (click)="deleteUser(user._id)"> <a class='btn btn-default' [routerLink]="['/profile']" value = "Cancel">Cancel</a>

@@ -1,0 +1,43 @@
+{
+  "name": "meanauthapp",
+  "version": "1.0.0",
+  "description": "MEAN stack authentication app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "ajax": "0.0.4",
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "async": "^2.6.0",
+    "axios": "^0.17.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "brcypt": "^1.0.1",
+    "cors": "*",
+    "email-verification": "^0.4.6",
+    "express": "*",
+    "get-json": "1.0.0",
+    "https": "^1.0.0",
+    "jquery": "^3.2.1",
+    "jsonwebtoken": "*",
+    "mongojs": "^2.4.0",
+    "mongoose": "*",
+    "native-crypto": "^1.8.1",
+    "nodemailer": "^4.6.7",
+    "passport": "*",
+    "passport-jwt": "*",
+    "password-reset": "^0.1.4",
+    "password-reset-nodemailer": "0.0.1",
+    "randombytes": "^2.0.6",
+    "request": "^2.81.0",
+    "webpack": "^3.0.0"
+  },
+  "author": "Kevin Yin",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

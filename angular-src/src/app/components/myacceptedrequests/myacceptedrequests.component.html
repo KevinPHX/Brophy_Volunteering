@@ -1,0 +1,57 @@
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.col-xs-2{
+  border-right: 1px solid #dddddd;
+}
+</style>
+
+
+<h2 class='page-header'>Requests I Have Accepted</h2>
+<div class="data-list">
+
+    <div class="col-xs-2">
+      <h5>I Can Help</h5>
+      <a href="/dashboard">Pending Requests</a>
+        <br><br>
+      <a href="/myacceptedrequests"><strong>Accepted Requests</strong></a>
+        <br><br>
+      <h5>I Need Help</h5>
+    <a href="/myrequest">My Pending Request</a>
+      <br><br>
+    <a href="/mypastrequests">My Past Requests</a>
+      <br><br>
+      <a class='btn btn-primary' [routerLink]="['/request']" value = "Request">Request A Tutor</a>
+        <br><br>
+    </div>
+    <div class = "col-xs-10">
+      <div *ngFor="let docs of documents">
+        <accordion>
+            <accordion-group heading= "Time of Request: {{docs.timerequest}} Subject: {{docs.subject}}     Topic: {{docs.topic}}      Name of Tutee: {{docs.tutoreename}}">
+              <h4>Time Request Was Accepted: {{docs.timeaccept}}</h4>
+              <h4>Additional Information: {{docs.addinfo}}</h4>
+              <h4>Email: {{docs.tutoreeemail}} </h4>
+              <h4>Phone Number: {{docs.tutoreephonenumber}}</h4>
+            </accordion-group>
+
+        </accordion>
+
+      </div>
+
+
+
+    </div>
+</div>

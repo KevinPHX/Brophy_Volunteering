@@ -1,0 +1,12 @@
+<h2 class='page-header'>Edit Request</h2>
+<form (submit)='editRequest()'>
+  <div class='form-group'>
+    <h4>Subject</h4>
+    <input type='text' class='form-control' [(ngModel)]='subject' name='subject'>
+    <h4>Topic</h4>
+    <input type='text' class='form-control' [(ngModel)]='topic' name='topic'>
+    <h4>Additional Information</h4>
+    <input type='text' class='form-control' [(ngModel)]='addinfo' name='addinfo'>
+  </div>
+  <input type='submit' class='btn btn-primary' (click) = "editRequest()" value='Submit' [routerLink]="['/dashboard']"><a class='btn btn-default' [routerLink]="['/dashboard']" value = "Cancel">Cancel</a>
+</form>
