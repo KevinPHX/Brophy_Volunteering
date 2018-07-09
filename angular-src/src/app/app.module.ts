@@ -7,6 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {AccordionModule} from "ng2-accordion";
 import {ModalModule} from "ng2-modal";
+import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     }),
     Ng2SearchPipeModule,
     AccordionModule,
-    ModalModule
+    ModalModule,
+    PasswordStrengthBarModule,
   ],
   providers: [ValidateService, AuthService, AuthGuard, DataService],
   bootstrap: [AppComponent]

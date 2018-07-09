@@ -36,10 +36,16 @@ Data:Data[];
     if(!this.validateService.validateEmail(user.email)){
       this.flashMessage.show("Please use a valid email", {cssClass:'alert-danger', timeout:3000});
       return false;
-      console.log(user.email)
+      //console.log(user.email)
     }
 
+
+
+
     this.authService.findUsers().subscribe(Data => {
+      for (var i = 0; i < Data.length; i++){
+        console.log(Data[i].email)
+        if (user.email == Data[i].email){
           this.authService.forgotUser(user).subscribe(data => {
             if(data){
               this.flashMessage.show("An email has been sent to your account",{
@@ -47,19 +53,20 @@ Data:Data[];
                 timeout:5000
               });
               this.router.navigate(['/login'])
-            } else {
-              console.log(user.email)
-              this.flashMessage.show("Please try again", {cssClass:'alert-danger', timeout:3000});
-              return false;
-            }
-
-          });
+          }
 
 
+        })
+        i = Data.length+1;
+        console.log(i)
+      }
+      if (i == Data.length -1 && user.email !== Data[i].email) {
+      this.flashMessage.show("Please enter the email you registered with", {cssClass:'alert-danger', timeout:3000});
+      return false;
+      }
 
-
-
-  })
+      }
+    });
 
 
   }

@@ -1,4 +1,4 @@
-<h2 lass='page-header'>Register</h2>
+<h2 class='page-header'>Register</h2>
 <form (submit)='onRegisterSubmit()'>
 <div class = "col-xs-12">
   <div class='form-group'>
@@ -57,6 +57,11 @@
   <div class='form-group'>
     <label>Password</label>
     <input type= 'password' [(ngModel)]='password' name='password' class='form-control'>
+    <ng2-password-strength-bar
+                [passwordToCheck]="password"
+                [barLabel]="barLabel"
+                [barColors]="myColors">
+            </ng2-password-strength-bar>
   </div>
 </div>
   <input type='submit' class = 'btn btn-primary' value='Submit' >

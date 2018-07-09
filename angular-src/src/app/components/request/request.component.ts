@@ -39,11 +39,21 @@ export class RequestComponent implements OnInit {
       topic: this.topic,
       addinfo: this.addinfo,
     }
-  this.dataService.requestHelp(user).subscribe(data => {
-    console.log("request recorded")
-  }, err=> {
-    console.log(err);
-  })
+    if (user.subject == undefined || user.topic == undefined){
+      this.flashMessage.show("Please fill in the subject and topic fields", {cssClass:'alert-danger', timeout:3000});
+      return false;
+    }
+      this.dataService.requestHelp(user).subscribe(data => {
+        console.log("request recorded")
+        this.router.navigate(['/dashboard'])
+      }, err=> {
+        console.log(err);
+      })
+
+
+
+
+
   }
 
 }

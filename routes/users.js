@@ -460,7 +460,7 @@ nev.confirmTempUser(url, function(err, user) {
 
     // user was found!
     if (user) {
-
+      res.send('You have successfully verified your account')
         // optional
         nev.sendConfirmationEmail(user['email'], function(err, info) {
             console.log("Successfully Verified")

@@ -37,12 +37,13 @@ export class LoginComponent implements OnInit {
         });
         this.router.navigate(['/dashboard'])
         this.dataService.unreadRequests(this.username).subscribe(data => {
+          if (data > 0){
           this.flashMessage.show("You have " + data + " accepted requests. You can see them in My Past Requests",{
             cssClass: "alert-info",
             timeout:5000
           })
+        }
         })
-
 
 
       } else {
