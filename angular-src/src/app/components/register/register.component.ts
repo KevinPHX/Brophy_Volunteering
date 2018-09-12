@@ -55,10 +55,19 @@ onRegisterSubmit(){
           return false;
         }
       }
-        if(!this.validateService.validateRegister(user)){
-          this.flashMessages.show("Please fill in all fields", {cssClass:'alert-danger', timeout:3000});
-          return false;
-        }
+      if(!this.validateService.validateRegister(user)){
+        this.flashMessages.show("Please fill in all fields", {cssClass:'alert-danger', timeout:3000});
+        return false;
+      }
+      //new stuff
+      let email = user.email
+      let substring = email.substring(email.length - 17, email.length)
+      if (substring != "brophybroncos.org" && substring != "@xaviergators.org"){
+        this.flashMessages.show("Please use your school email", {cssClass:'alert-danger', timeout:3000});
+        return false;
+      }
+      //end of new stuff
+
         if(!this.validateService.validateEmail(user.email)){
           this.flashMessages.show("Please use a valid email", {cssClass:'alert-danger', timeout:3000});
           return false;

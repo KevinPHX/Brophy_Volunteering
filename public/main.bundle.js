@@ -1310,6 +1310,14 @@ var RegisterComponent = /** @class */ (function () {
                 _this.flashMessages.show("Please fill in all fields", { cssClass: 'alert-danger', timeout: 3000 });
                 return false;
             }
+            //new stuff
+            var email = user.email;
+            var substring = email.substring(email.length - 17, email.length);
+            if (substring != "brophybroncos.org" && substring != "@xaviergators.org") {
+                _this.flashMessages.show("Please use your school email", { cssClass: 'alert-danger', timeout: 3000 });
+                return false;
+            }
+            //end of new stuff
             if (!_this.validateService.validateEmail(user.email)) {
                 _this.flashMessages.show("Please use a valid email", { cssClass: 'alert-danger', timeout: 3000 });
                 return false;
@@ -1369,7 +1377,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/request/request.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class='page-header'>Request</h2>\n<form (submit)='requestHelp()'>\n  <div class='form-group'>\n    <h4>Subject</h4>\n    <input type='text' class='form-control' [(ngModel)]='subject' name='subject'>\n    <h4>Topic</h4>\n    <input type='text' class='form-control' [(ngModel)]='topic' name='topic'>\n    <h4>Additional Information</h4>\n    <input type='text' class='form-control' [(ngModel)]='addinfo' name='addinfo'>\n  </div>\n  <input type='submit' class='btn btn-primary'  value='Submit' ><a class='btn btn-default' [routerLink]=\"['/dashboard']\" value = \"Cancel\">Cancel</a>\n</form>\n"
+module.exports = "<h2 class='page-header'>Request</h2>\n<form (submit)='requestHelp()'>\n  <div class='form-group'>\n    <h4>Subject</h4>\n    <input type='text' class='form-control' [(ngModel)]='subject' name='subject'>\n    <h4>Topic</h4>\n    <input type='text' class='form-control' [(ngModel)]='topic' name='topic'>\n    <h4>Additional Information</h4>\n    <input type='text' class='form-control' [(ngModel)]='addinfo' name='addinfo'>\n  </div>\n  <input type='submit' class='btn btn-primary'  value='Submit'><a class='btn btn-default' [routerLink]=\"['/dashboard']\" value = \"Cancel\">Cancel</a>\n</form>\n"
 
 /***/ }),
 
