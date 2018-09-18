@@ -16,7 +16,7 @@ var nev = require('email-verification')(mongoose);
 var nodemailer = require("nodemailer")
 var async = require("async")
 var crypto = require("crypto")
-
+var ObjectID = require('mongodb').ObjectID;
 mongoose.connect(config.database);
 
 
@@ -264,7 +264,7 @@ router.post('/request/:username', function ( req, res, next){
 
   })
 
-router.post('/accept/:tutoreeusername/:email', function ( req, res, next){
+router.post('/accept/:id/:email', function ( req, res, next){
   var date1 = new Date();
   month = date1.getMonth() + 1;
   if (date1.getMinutes() < 10){
@@ -280,7 +280,7 @@ router.post('/accept/:tutoreeusername/:email', function ( req, res, next){
     pass: 'Whatever2018'
   }
   });
-  Tutoree.findOne({tutoreeusername: req.params.tutoreeusername, type: "Pending"}, function(err, tutoree) {
+  Tutoree.findOne({_id: ObjectID(req.params.id), type: "Pending"}, function(err, tutoree) {
                 if (err){
                     res.send(err);
                   }
@@ -293,7 +293,7 @@ router.post('/accept/:tutoreeusername/:email', function ( req, res, next){
                     }
 
 
-                    console.log(tutoree.timerequest)
+                    //console.log(tutoree.timerequest)
                     let newTutor = new Tutor({
                       timerequest: tutoree.timerequest,
                       timeaccept: "" + month + "/" + date1.getDate() + "/" + date1.getFullYear() + " " + date1.getHours() + ":" + minutes,
@@ -320,7 +320,7 @@ router.post('/accept/:tutoreeusername/:email', function ( req, res, next){
 
 
                     db.collection('tutoree').update(
-                      {tutoreeusername: tutoree.tutoreeusername, type: "Pending"},
+                      {_id: ObjectID(req.params.id), type: "Pending"},
                       {$set: {timeaccept: date2, type:"Completed", tutorname: tutor.firstname + " " + tutor.lastname, tutoremail: tutor.email, tutorphonenumber: tutor.phonenumber, tutorgrade: tutor.grade}},
                     function(err, users) {
                     if (err) res.send(err);
@@ -363,9 +363,9 @@ router.post('/accept/:tutoreeusername/:email', function ( req, res, next){
   });
 })
 
-router.post('/cancel/:tutoreeusername', function ( req, res, next){
+router.post('/cancel/:id', function ( req, res, next){
     db.collection('tutoree').update(
-      {tutoreeusername: req.params.tutoreeusername, type:"Pending"},
+      {_id : ObjectID(req.params.id), type:"Pending"},
       {$set: {type:"Cancelled"}},
     function(err, users) {
     if (err) res.send(err);
@@ -373,12 +373,12 @@ router.post('/cancel/:tutoreeusername', function ( req, res, next){
     });
 })
 
-router.post('/editrequest/:tutoreeusername', function ( req, res, next){
+router.post('/editrequest/:id', function ( req, res, next){
     subject = req.body.subject;
     topic = req.body.topic;
     addinfo = req.body.addinfo;
     db.collection('tutoree').update(
-      {tutoreeusername: req.params.tutoreeusername, type:"Pending"},
+      {_id : ObjectID(req.params.id), type:"Pending"},
       {$set: {subject: subject, topic: topic, addinfo: addinfo}},
     function(err, users) {
     if (err) res.send(err);

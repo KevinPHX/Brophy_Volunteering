@@ -33,10 +33,18 @@ export class EditrequestComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.href = this.router.url;
+    console.log(this.href)
+    this.id = this.href.substring(13);
+    console.log(this.id);
     this.dataService.myRequest().subscribe(request => {
-      this.subject = request[0].subject;
-      this.topic = request[0].topic;
-      this.addinfo = request[0].addinfo;
+      for (var i = 0; i < request.length; i++ ){
+        if (request[i]._id == this.id){
+          this.subject = request[i].subject;
+          this.topic = request[i].topic;
+          this.addinfo = request[i].addinfo;
+        }
+      }
     },
     err => {
       console.log(err);
@@ -51,7 +59,11 @@ export class EditrequestComponent implements OnInit {
       topic: this.topic,
       addinfo: this.addinfo,
     }
-  this.dataService.editRequest(user).subscribe(data => {
+    this.href = this.router.url;
+    console.log(this.href)
+    this.id = this.href.substring(13);
+    console.log(this.id);
+  this.dataService.editRequest(this.id, user).subscribe(data => {
     console.log("request changed")
   }, err=> {
     console.log(err);

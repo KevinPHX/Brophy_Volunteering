@@ -29,7 +29,7 @@ data: Data[];
         });
   }
 
-  
+
 
   ngOnInit() {
   }
@@ -38,8 +38,8 @@ data: Data[];
 
 
 
-acceptHelp(username){
-this.dataService.acceptHelp(username).subscribe(data => {
+acceptHelp(id){
+this.dataService.acceptHelp(id).subscribe(data => {
   console.log("request accepted")
 }, err=> {
   console.log(err);

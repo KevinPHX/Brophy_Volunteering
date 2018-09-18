@@ -46,7 +46,7 @@ tr:nth-child(even) {
                 <li class='list-group-item'>Additional Information: {{docs.addinfo}}</li>
                 <li class='list-group-item'>Email: {{docs.tutoreeemail}}</li>
                 <li class='list-group-item'>Phone Number: {{docs.tutoreephonenumber}}</li>
-                <input type = "button" class = 'btn btn-primary' value='Cancel' (click)="cancelHelp()" [routerLink]="['/dashboard']"><input type = "button" class = 'btn btn-default' value='Edit' [routerLink]="['/editrequest']">
+                <input type = "button" class = 'btn btn-primary' value='Cancel' (click)="cancelHelp(docs._id)" [routerLink]="['/dashboard']"><input type = "button" class = 'btn btn-default' value='Edit' [routerLink]="['/editrequest/', docs._id]">
 
         </ul>
         <br><br>

@@ -69,7 +69,7 @@ export class DataService implements OnInit {
 
     })
   }
-  acceptHelp(username){
+  acceptHelp(id){
     return this.authService.getProfile().flatMap(profile => {
       this.user = profile.user;
       this.email = profile.user.email;
@@ -79,40 +79,34 @@ export class DataService implements OnInit {
       this.email;
       let headers = new Headers();
       headers.append("Content-Type", 'application/json');
-      return this.http.post('https://localhost:3000/users/accept/' + username + "/" + this.email, {headers:headers})
+      return this.http.post('https://localhost:3000/users/accept/' + id + "/" + this.email, {headers:headers})
       .map(res => res.json());
 
     })
   }
-  cancelHelp(){
-    return this.authService.getProfile().flatMap(profile => {
-      this.user = profile.user;
-      this.username = profile.user.username;
-      //this.fetchData(this.username)
-      console.log(this.user)
-      console.log(this.username);
-      this.username;
-      let headers = new Headers();
-      headers.append("Content-Type", 'application/json');
-      return this.http.post('https://localhost:3000/users/cancel/' + this.username, {headers:headers})
-      .map(res => res.json());
-
-    })
+  cancelHelp(id){
+    let headers = new Headers();
+    headers.append("Content-Type", 'application/json');
+    return this.http.post('https://localhost:3000/users/cancel/' + id,{headers:headers})
+    .map(res => res.json());
   }
-  editRequest(user){
-    return this.authService.getProfile().flatMap(profile => {
-      this.user = profile.user;
-      this.username = profile.user.username;
-      //this.fetchData(this.username)
-      console.log(this.user)
-      console.log(this.username);
-      this.username;
-      let headers = new Headers();
-      headers.append("Content-Type", 'application/json');
-      return this.http.post('https://localhost:3000/users/editrequest/' + this.username, user, {headers:headers})
-      .map(res => res.json());
-
-    })
+  editRequest(id, user){
+    let headers = new Headers();
+    headers.append("Content-Type", 'application/json');
+    return this.http.post('https://localhost:3000/users/editrequest/' + id, user, {headers:headers})
+    .map(res => res.json());
+    // return this.authService.getProfile().flatMap(profile => {
+    //   this.user = profile.user;
+    //   this.username = profile.user.username;
+    //   //this.fetchData(this.username)
+    //   console.log(this.user)
+    //   console.log(this.username);
+    //   this.username;
+    //   let headers = new Headers();
+    //   headers.append("Content-Type", 'application/json');
+    //   return this.http.post('https://localhost:3000/users/editrequest/' + this.username, user, {headers:headers})
+    //   .map(res => res.json());
+    // })
   }
   myRequest(){
     return this.authService.getProfile().flatMap(profile => {

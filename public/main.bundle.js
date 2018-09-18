@@ -166,7 +166,7 @@ var appRoutes = [
     { path: 'myacceptedrequests', component: __WEBPACK_IMPORTED_MODULE_28__components_myacceptedrequests_myacceptedrequests_component__["a" /* MyacceptedrequestsComponent */] },
     { path: 'myrequest', component: __WEBPACK_IMPORTED_MODULE_26__components_myrequest_myrequest_component__["a" /* MyrequestComponent */] },
     { path: 'mypastrequests', component: __WEBPACK_IMPORTED_MODULE_27__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */] },
-    { path: 'editrequest', component: __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__["a" /* EditrequestComponent */] },
+    { path: 'editrequest/:id', component: __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__["a" /* EditrequestComponent */] },
     { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_30__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] },
 ];
 var AppModule = /** @class */ (function () {
@@ -238,7 +238,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<style>\n.accordion {\n    background-color: #eee;\n    color: #444;\n    cursor: pointer;\n    padding: 18px;\n    width: 100%;\n    border: none;\n    text-align: left;\n    outline: none;\n    font-size: 15px;\n    transition: 0.4s;\n}\n\n.active, .accordion:hover {\n    background-color: #ccc;\n}\n\n.panel {\n    padding: 0 18px;\n    display: none;\n    background-color: white;\n    overflow: hidden;\n}\n.search{\n  padding: 8px;\n  float: right;\n}\n\n.col-xs-2{\n  border-right: 1px solid #dddddd;\n}\n</style>\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n<script>\n$(document).ready(function(){\n    $(\"searchbutton\").click(function(){\n        $(\"searchbar\").show();\n    });\n});\n</script>\n<h2 class='page-header'>Dashboard</h2>\n<div class=\"data-list\">\n\n    <div class=\"col-xs-2\">\n        <h5>I Can Help</h5>\n        <a href=\"/dashboard\"><strong>Pending Requests</strong></a>\n          <br><br>\n        <a href=\"/myacceptedrequests\">Accepted Requests</a>\n          <br><br>\n        <h5>I Need Help</h5>\n      <a href=\"/myrequest\">My Pending Request</a>\n        <br><br>\n      <a href=\"/mypastrequests\">My Past Requests</a>\n        <br><br>\n        <a class='btn btn-primary' [routerLink]=\"['/request']\" value = \"Request\">Request A Tutor</a>\n          <br><br>\n\n    </div>\n    <div class = \"col-xs-10\">\n      <h3>Pending Requests</h3>\n      <div class = \"search\">\n        <span class=\"glyphicon glyphicon-search\"></span><input type=\"text\" [(ngModel)]=\"term\">\n      </div>\n      <br><br>\n      <br><br>\n      <div *ngFor=\"let docs of documents |filter:term\">\n        <!-- regular accordion -->\n    <accordion>\n        <accordion-group heading= \"{{docs.timerequest}} Subject: {{docs.subject}}     Topic: {{docs.topic}}      Name: {{docs.tutoreename}}\">\n          <h4>Additional Information: {{docs.addinfo}}</h4>\n          <h4>Email: {{docs.tutoreeemail}} </h4>\n          <h4>Phone Number: {{docs.tutoreephonenumber}}</h4>\n          <button (click)=\"myModal.open()\"><h4>Accept Request</h4></button>\n          <modal #myModal>\n            <modal-content>\n              <h3>Do you wish to accept this request?</h3>\n            </modal-content>\n            <modal-footer>\n              <button class=\"btn btn-primary\" (click)=\"myModal.close()\">No</button><button class=\"btn btn-primary\" (click)=\"myModal.close()\" (click)=\"acceptHelp(docs.tutoreeusername)\" >Yes</button>\n            </modal-footer>\n          </modal>\n        </accordion-group>\n\n    </accordion>\n\n      </div>\n\n\n\n    </div>\n</div>\n"
+module.exports = "<style>\n.accordion {\n    background-color: #eee;\n    color: #444;\n    cursor: pointer;\n    padding: 18px;\n    width: 100%;\n    border: none;\n    text-align: left;\n    outline: none;\n    font-size: 15px;\n    transition: 0.4s;\n}\n\n.active, .accordion:hover {\n    background-color: #ccc;\n}\n\n.panel {\n    padding: 0 18px;\n    display: none;\n    background-color: white;\n    overflow: hidden;\n}\n.search{\n  padding: 8px;\n  float: right;\n}\n\n.col-xs-2{\n  border-right: 1px solid #dddddd;\n}\n</style>\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n<script>\n$(document).ready(function(){\n    $(\"searchbutton\").click(function(){\n        $(\"searchbar\").show();\n    });\n});\n</script>\n<h2 class='page-header'>Dashboard</h2>\n<div class=\"data-list\">\n\n    <div class=\"col-xs-2\">\n        <h5>I Can Help</h5>\n        <a href=\"/dashboard\"><strong>Pending Requests</strong></a>\n          <br><br>\n        <a href=\"/myacceptedrequests\">Accepted Requests</a>\n          <br><br>\n        <h5>I Need Help</h5>\n      <a href=\"/myrequest\">My Pending Request</a>\n        <br><br>\n      <a href=\"/mypastrequests\">My Past Requests</a>\n        <br><br>\n        <a class='btn btn-primary' [routerLink]=\"['/request']\" value = \"Request\">Request A Tutor</a>\n          <br><br>\n\n    </div>\n    <div class = \"col-xs-10\">\n      <h3>Pending Requests</h3>\n      <div class = \"search\">\n        <span class=\"glyphicon glyphicon-search\"></span><input type=\"text\" [(ngModel)]=\"term\">\n      </div>\n      <br><br>\n      <br><br>\n      <div *ngFor=\"let docs of documents |filter:term\">\n        <!-- regular accordion -->\n    <accordion>\n        <accordion-group heading= \"{{docs.timerequest}} Subject: {{docs.subject}}     Topic: {{docs.topic}}      Name: {{docs.tutoreename}}\">\n          <h4>Additional Information: {{docs.addinfo}}</h4>\n          <h4>Email: {{docs.tutoreeemail}} </h4>\n          <h4>Phone Number: {{docs.tutoreephonenumber}}</h4>\n          <button (click)=\"myModal.open()\"><h4>Accept Request</h4></button>\n          <modal #myModal>\n            <modal-content>\n              <h3>Do you wish to accept this request?</h3>\n            </modal-content>\n            <modal-footer>\n              <button class=\"btn btn-primary\" (click)=\"myModal.close()\">No</button><button class=\"btn btn-primary\" (click)=\"myModal.close()\" (click)=\"acceptHelp(docs._id)\" >Yes</button>\n            </modal-footer>\n          </modal>\n        </accordion-group>\n\n    </accordion>\n\n      </div>\n\n\n\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -283,8 +283,8 @@ var DashboardComponent = /** @class */ (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
     };
-    DashboardComponent.prototype.acceptHelp = function (username) {
-        this.dataService.acceptHelp(username).subscribe(function (data) {
+    DashboardComponent.prototype.acceptHelp = function (id) {
+        this.dataService.acceptHelp(id).subscribe(function (data) {
             console.log("request accepted");
         }, function (err) {
             console.log(err);
@@ -378,10 +378,18 @@ var EditrequestComponent = /** @class */ (function () {
     }
     EditrequestComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.href = this.router.url;
+        console.log(this.href);
+        this.id = this.href.substring(13);
+        console.log(this.id);
         this.dataService.myRequest().subscribe(function (request) {
-            _this.subject = request[0].subject;
-            _this.topic = request[0].topic;
-            _this.addinfo = request[0].addinfo;
+            for (var i = 0; i < request.length; i++) {
+                if (request[i]._id == _this.id) {
+                    _this.subject = request[i].subject;
+                    _this.topic = request[i].topic;
+                    _this.addinfo = request[i].addinfo;
+                }
+            }
         }, function (err) {
             console.log(err);
             return false;
@@ -393,7 +401,11 @@ var EditrequestComponent = /** @class */ (function () {
             topic: this.topic,
             addinfo: this.addinfo,
         };
-        this.dataService.editRequest(user).subscribe(function (data) {
+        this.href = this.router.url;
+        console.log(this.href);
+        this.id = this.href.substring(13);
+        console.log(this.id);
+        this.dataService.editRequest(this.id, user).subscribe(function (data) {
             console.log("request changed");
         }, function (err) {
             console.log(err);
@@ -994,7 +1006,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/myrequest/myrequest.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd, th {\n    border: 1px solid #dddddd;\n    text-align: left;\n    padding: 8px;\n}\n\ntr:nth-child(even) {\n    background-color: #dddddd;\n}\n.col-xs-2{\n  border-right: 1px solid #dddddd;\n}\n</style>\n\n\n<h2 class='page-header'>My Request</h2>\n<div class=\"data-list\">\n\n    <div class=\"col-xs-2\">\n      <h5>I Can Help</h5>\n      <a href=\"/dashboard\">Pending Requests</a>\n        <br><br>\n      <a href=\"/myacceptedrequests\">Accepted Requests</a>\n        <br><br>\n      <h5>I Need Help</h5>\n    <a href=\"/myrequest\"><strong>My Pending Request</strong></a>\n      <br><br>\n    <a href=\"/mypastrequests\">My Past Requests</a>\n      <br><br>\n      <a class='btn btn-primary' [routerLink]=\"['/request']\" value = \"Request\">Request A Tutor</a>\n        <br><br>\n    </div>\n    <div class = \"col-xs-10\">\n      <div *ngFor=\"let docs of documents\">\n        <ul class='list-group'>\n                <li class='list-group-item'>Name: {{docs.tutoreename}}</li>\n                <li class='list-group-item'>Subject: {{docs.subject}}</li>\n                <li class='list-group-item'>Topic: {{docs.topic}}</li>\n                <li class='list-group-item'>Additional Information: {{docs.addinfo}}</li>\n                <li class='list-group-item'>Email: {{docs.tutoreeemail}}</li>\n                <li class='list-group-item'>Phone Number: {{docs.tutoreephonenumber}}</li>\n                <input type = \"button\" class = 'btn btn-primary' value='Cancel' (click)=\"cancelHelp()\" [routerLink]=\"['/dashboard']\"><input type = \"button\" class = 'btn btn-default' value='Edit' [routerLink]=\"['/editrequest']\">\n\n        </ul>\n        <br><br>\n      </div>\n\n\n\n    </div>\n</div>\n"
+module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd, th {\n    border: 1px solid #dddddd;\n    text-align: left;\n    padding: 8px;\n}\n\ntr:nth-child(even) {\n    background-color: #dddddd;\n}\n.col-xs-2{\n  border-right: 1px solid #dddddd;\n}\n</style>\n\n\n<h2 class='page-header'>My Request</h2>\n<div class=\"data-list\">\n\n    <div class=\"col-xs-2\">\n      <h5>I Can Help</h5>\n      <a href=\"/dashboard\">Pending Requests</a>\n        <br><br>\n      <a href=\"/myacceptedrequests\">Accepted Requests</a>\n        <br><br>\n      <h5>I Need Help</h5>\n    <a href=\"/myrequest\"><strong>My Pending Request</strong></a>\n      <br><br>\n    <a href=\"/mypastrequests\">My Past Requests</a>\n      <br><br>\n      <a class='btn btn-primary' [routerLink]=\"['/request']\" value = \"Request\">Request A Tutor</a>\n        <br><br>\n    </div>\n    <div class = \"col-xs-10\">\n      <div *ngFor=\"let docs of documents\">\n        <ul class='list-group'>\n                <li class='list-group-item'>Name: {{docs.tutoreename}}</li>\n                <li class='list-group-item'>Subject: {{docs.subject}}</li>\n                <li class='list-group-item'>Topic: {{docs.topic}}</li>\n                <li class='list-group-item'>Additional Information: {{docs.addinfo}}</li>\n                <li class='list-group-item'>Email: {{docs.tutoreeemail}}</li>\n                <li class='list-group-item'>Phone Number: {{docs.tutoreephonenumber}}</li>\n                <input type = \"button\" class = 'btn btn-primary' value='Cancel' (click)=\"cancelHelp(docs._id)\" [routerLink]=\"['/dashboard']\"><input type = \"button\" class = 'btn btn-default' value='Edit' [routerLink]=\"['/editrequest/', docs._id]\">\n\n        </ul>\n        <br><br>\n      </div>\n\n\n\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -1039,8 +1051,8 @@ var MyrequestComponent = /** @class */ (function () {
     }
     MyrequestComponent.prototype.ngOnInit = function () {
     };
-    MyrequestComponent.prototype.cancelHelp = function () {
-        this.dataService.cancelHelp().subscribe(function (data) {
+    MyrequestComponent.prototype.cancelHelp = function (id) {
+        this.dataService.cancelHelp(id).subscribe(function (data) {
             console.log("request cancelled");
         }, function (err) {
             console.log(err);
@@ -1804,7 +1816,7 @@ var DataService = /** @class */ (function () {
                 .map(function (res) { return res.json(); });
         });
     };
-    DataService.prototype.acceptHelp = function (username) {
+    DataService.prototype.acceptHelp = function (id) {
         var _this = this;
         return this.authService.getProfile().flatMap(function (profile) {
             _this.user = profile.user;
@@ -1815,39 +1827,33 @@ var DataService = /** @class */ (function () {
             _this.email;
             var headers = new Headers();
             headers.append("Content-Type", 'application/json');
-            return _this.http.post('https://localhost:3000/users/accept/' + username + "/" + _this.email, { headers: headers })
+            return _this.http.post('https://localhost:3000/users/accept/' + id + "/" + _this.email, { headers: headers })
                 .map(function (res) { return res.json(); });
         });
     };
-    DataService.prototype.cancelHelp = function () {
-        var _this = this;
-        return this.authService.getProfile().flatMap(function (profile) {
-            _this.user = profile.user;
-            _this.username = profile.user.username;
-            //this.fetchData(this.username)
-            console.log(_this.user);
-            console.log(_this.username);
-            _this.username;
-            var headers = new Headers();
-            headers.append("Content-Type", 'application/json');
-            return _this.http.post('https://localhost:3000/users/cancel/' + _this.username, { headers: headers })
-                .map(function (res) { return res.json(); });
-        });
+    DataService.prototype.cancelHelp = function (id) {
+        var headers = new Headers();
+        headers.append("Content-Type", 'application/json');
+        return this.http.post('https://localhost:3000/users/cancel/' + id, { headers: headers })
+            .map(function (res) { return res.json(); });
     };
-    DataService.prototype.editRequest = function (user) {
-        var _this = this;
-        return this.authService.getProfile().flatMap(function (profile) {
-            _this.user = profile.user;
-            _this.username = profile.user.username;
-            //this.fetchData(this.username)
-            console.log(_this.user);
-            console.log(_this.username);
-            _this.username;
-            var headers = new Headers();
-            headers.append("Content-Type", 'application/json');
-            return _this.http.post('https://localhost:3000/users/editrequest/' + _this.username, user, { headers: headers })
-                .map(function (res) { return res.json(); });
-        });
+    DataService.prototype.editRequest = function (id, user) {
+        var headers = new Headers();
+        headers.append("Content-Type", 'application/json');
+        return this.http.post('https://localhost:3000/users/editrequest/' + id, user, { headers: headers })
+            .map(function (res) { return res.json(); });
+        // return this.authService.getProfile().flatMap(profile => {
+        //   this.user = profile.user;
+        //   this.username = profile.user.username;
+        //   //this.fetchData(this.username)
+        //   console.log(this.user)
+        //   console.log(this.username);
+        //   this.username;
+        //   let headers = new Headers();
+        //   headers.append("Content-Type", 'application/json');
+        //   return this.http.post('https://localhost:3000/users/editrequest/' + this.username, user, {headers:headers})
+        //   .map(res => res.json());
+        // })
     };
     DataService.prototype.myRequest = function () {
         var _this = this;

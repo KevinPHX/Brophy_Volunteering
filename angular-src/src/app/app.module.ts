@@ -45,7 +45,7 @@ const appRoutes: Routes = [
   {path:'myacceptedrequests', component: MyacceptedrequestsComponent},
   {path:'myrequest', component: MyrequestComponent},
   {path:'mypastrequests', component: MypastrequestsComponent},
-  {path:'editrequest', component: EditrequestComponent},
+  {path:'editrequest/:id', component: EditrequestComponent},
   {path:'leaderboard', component: LeaderboardComponent},
 ]
 

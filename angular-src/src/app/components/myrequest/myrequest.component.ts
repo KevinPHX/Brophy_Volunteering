@@ -27,9 +27,9 @@ export class MyrequestComponent implements OnInit {
   ngOnInit() {
   }
 
-  
-  cancelHelp(){
-  this.dataService.cancelHelp().subscribe(data => {
+
+  cancelHelp(id){
+  this.dataService.cancelHelp(id).subscribe(data => {
     console.log("request cancelled")
   }, err=> {
     console.log(err);
