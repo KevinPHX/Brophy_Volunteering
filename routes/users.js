@@ -116,6 +116,7 @@ router.post('/update', (req, res, next) => {
     phonenumber: req.body.phonenumber,
     username: req.body.username,
     password: req.body.password,//add way to identify whether email is brophy/xavier. Use this:http://www.java2s.com/Tutorials/Javascript/Node.js_Tutorial/0050__Node.js_String_Functions.htm
+    rating: req.body.rating,
     });
 
     User.updateUser(newUser, (err, user) => {
