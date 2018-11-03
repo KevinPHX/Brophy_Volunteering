@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-
+import {ModalModule} from "ng2-modal";
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -25,5 +25,14 @@ export class ProfileComponent implements OnInit {
       return false;
     });
   }
-
+  deleteUser(id){
+    this.authService.deleteUser(id).subscribe(data => {
+      console.log("account deleted")
+      this.authService.logout();
+      this.router.navigate(['/']);
+      return false
+    }, err=> {
+      console.log(err);
+    })
+  }
 }

@@ -1173,7 +1173,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='user'>\n  <h2 class='page-header'>{{user.firstname}} {{user.lastname}}</h2>\n  <ul class='list-group'>\n    <li class='list-group-item'>School: {{user.school}}</li>\n    <li class='list-group-item'>Grade: {{user.grade}}th</li>\n    <li class='list-group-item'>Username: {{user.username}}</li>\n    <li class='list-group-item'>Email: {{user.email}}</li>\n    <li class='list-group-item'>Phone Number: {{user.phonenumber}}</li>\n  </ul>\n</div>\n\n<a class='btn btn-primary' [routerLink]=\"['/update']\" value = \"Update\">Update</a>\n"
+module.exports = "<div *ngIf='user'>\n  <h2 class='page-header'>{{user.firstname}} {{user.lastname}}</h2>\n  <ul class='list-group'>\n    <li class='list-group-item'>School: {{user.school}}</li>\n    <li class='list-group-item'>Grade: {{user.grade}}th</li>\n    <li class='list-group-item'>Username: {{user.username}}</li>\n    <li class='list-group-item'>Email: {{user.email}}</li>\n    <li class='list-group-item'>Phone Number: {{user.phonenumber}}</li>\n  </ul>\n\n<a class='btn btn-primary' [routerLink]=\"['/update']\" value = \"Update\">Update</a>   <button class='btn' (click)=\"myModal.open()\"><h4>Delete Account</h4></button>\n  <modal #myModal>\n    <modal-content>\n      <h3>Are you sure you want to delete your account?</h3>\n    </modal-content>\n    <modal-footer>\n      <button class=\"btn btn-primary\" (click)=\"myModal.close()\">No</button><button class=\"btn btn-primary\" (click)=\"myModal.close()\" (click)=\"deleteUser(user._id)\" (click)=\"refresh()\" >Yes</button>\n    </modal-footer>\n  </modal>\n</div>\n"
 
 /***/ }),
 
@@ -1212,6 +1212,17 @@ var ProfileComponent = /** @class */ (function () {
         }, function (err) {
             console.log(err);
             return false;
+        });
+    };
+    ProfileComponent.prototype.deleteUser = function (id) {
+        var _this = this;
+        this.authService.deleteUser(id).subscribe(function (data) {
+            console.log("account deleted");
+            _this.authService.logout();
+            _this.router.navigate(['/']);
+            return false;
+        }, function (err) {
+            console.log(err);
         });
     };
     ProfileComponent = __decorate([
@@ -1610,7 +1621,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/update/update.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div ng-controller=\"ngOnInit\">\n<div *ngIf='user'>\n<h2 class='page-header'>Update</h2>\n<form (submit)='onUpdateSubmit()'>\n<div class = 'col-xs-12'>\n  <div class='form-group'>\n    <label>Brophy or Xavier</label><br>\n    <input type='radio' [(ngModel)]='school' name='brophy' value='Brophy' class=\"form-check\" >   Brophy\n    <input type='radio' [(ngModel)]='school' name='xavier' value='Xavier' class=\"form-check\">   Xavier\n  </div>\n</div>\n<br><br>\n<div class = 'col-xs-5'>\n  <div class='form-group'>\n    <label>First Name</label>\n    <input type='text' [(ngModel)]='firstname' name='firstname' class=\"form-control\"  >\n  </div>\n</div>\n<div class = 'col-xs-5'>\n  <div class='form-group'>\n    <label>Last Name</label>\n    <input type='text' [(ngModel)]='lastname' name='lastname' class=\"form-control\" >\n  </div>\n</div>\n<div class = 'col-xs-2'>\n  <div class='form-group'>\n    <label>Grade</label>\n    <select [(ngModel)]='grade' name='grade' class=\"form-control\">\n      <option value=\"9\">9</option>\n      <option value=\"10\">10</option>\n      <option value=\"11\">11</option>\n      <option value=\"12\">12</option>\n    </select>\n    <!-- <input type= 'text' [(ngModel)]='grade' name='grade' class='form-control' > -->\n  </div>\n</div>\n<br><br>\n<div class = 'col-xs-6'>\n<div class='form-group'>\n  <label>Phone Number</label>\n  <input type='text' [(ngModel)]='phonenumber' name='phonenumber' class=\"form-control\" >\n</div>\n</div>\n<div class = 'col-xs-6'>\n<div class='form-group'>\n  <label>Email</label>\n  <input type= 'text' [(ngModel)]='email' name='email' class='form-control' >\n</div>\n</div>\n<br><br>\n<div class = 'col-xs-12'>\n  <div class='form-group'>\n    <label>Username</label>\n    <input type= 'text' [(ngModel)]='username' name='username' class='form-control' >\n  </div>\n</div>\n\n\n\n  <input type='submit' class = 'btn btn-primary' value='Submit' (click)=\"deleteUser(user._id)\"> <a class='btn btn-default' [routerLink]=\"['/profile']\" value = \"Cancel\">Cancel</a>\n"
+module.exports = "<div ng-controller=\"ngOnInit\">\n<div *ngIf='user'>\n<h2 class='page-header'>Update</h2>\n<form (submit)='onUpdateSubmit()'>\n<div class = 'col-xs-12'>\n  <div class='form-group'>\n    <label>Brophy or Xavier</label><br>\n    <input type='radio' [(ngModel)]='school' name='brophy' value='Brophy' class=\"form-check\" >   Brophy\n    <input type='radio' [(ngModel)]='school' name='xavier' value='Xavier' class=\"form-check\">   Xavier\n  </div>\n</div>\n<br><br>\n<div class = 'col-xs-5'>\n  <div class='form-group'>\n    <label>First Name</label>\n    <input type='text' [(ngModel)]='firstname' name='firstname' class=\"form-control\"  >\n  </div>\n</div>\n<div class = 'col-xs-5'>\n  <div class='form-group'>\n    <label>Last Name</label>\n    <input type='text' [(ngModel)]='lastname' name='lastname' class=\"form-control\" >\n  </div>\n</div>\n<div class = 'col-xs-2'>\n  <div class='form-group'>\n    <label>Grade</label>\n    <select [(ngModel)]='grade' name='grade' class=\"form-control\">\n      <option value=\"9\">9</option>\n      <option value=\"10\">10</option>\n      <option value=\"11\">11</option>\n      <option value=\"12\">12</option>\n    </select>\n    <!-- <input type= 'text' [(ngModel)]='grade' name='grade' class='form-control' > -->\n  </div>\n</div>\n<br><br>\n<div class = 'col-xs-6'>\n<div class='form-group'>\n  <label>Phone Number</label>\n  <input type='text' [(ngModel)]='phonenumber' name='phonenumber' class=\"form-control\" >\n</div>\n</div>\n<div class = 'col-xs-6'>\n<div class='form-group'>\n  <label>Email</label>\n  <input type= 'text' [(ngModel)]='email' name='email' class='form-control' disabled>\n</div>\n</div>\n<br><br>\n<div class = 'col-xs-12'>\n  <div class='form-group'>\n    <label>Username</label>\n    <input type= 'text' [(ngModel)]='username' name='username' class='form-control' disabled>\n  </div>\n</div>\n\n\n\n  <input type='submit' class = 'btn btn-primary' value='Submit' (click)=\"deleteUser(user._id)\"> <a class='btn btn-default' [routerLink]=\"['/profile']\" value = \"Cancel\">Cancel</a>\n"
 
 /***/ }),
 

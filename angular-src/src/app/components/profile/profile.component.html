@@ -7,6 +7,14 @@
     <li class='list-group-item'>Email: {{user.email}}</li>
     <li class='list-group-item'>Phone Number: {{user.phonenumber}}</li>
   </ul>
-</div>
 
-<a class='btn btn-primary' [routerLink]="['/update']" value = "Update">Update</a>
+<a class='btn btn-primary' [routerLink]="['/update']" value = "Update">Update</a>   <button class='btn' (click)="myModal.open()"><h4>Delete Account</h4></button>
+  <modal #myModal>
+    <modal-content>
+      <h3>Are you sure you want to delete your account?</h3>
+    </modal-content>
+    <modal-footer>
+      <button class="btn btn-primary" (click)="myModal.close()">No</button><button class="btn btn-primary" (click)="myModal.close()" (click)="deleteUser(user._id)" (click)="refresh()" >Yes</button>
+    </modal-footer>
+  </modal>
+</div>
