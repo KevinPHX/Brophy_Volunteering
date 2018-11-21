@@ -812,7 +812,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/myacceptedrequests/myacceptedrequests.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd, th {\n    border: 1px solid #dddddd;\n    text-align: left;\n    padding: 8px;\n}\n\ntr:nth-child(even) {\n    background-color: #dddddd;\n}\n.col-xs-2{\n  border-right: 1px solid #dddddd;\n}\n</style>\n\n\n<h2 class='page-header'>Requests I Have Accepted</h2>\n<div class=\"data-list\">\n\n    <div class=\"col-xs-2\">\n      <h5>I Can Help</h5>\n      <a href=\"/dashboard\">Pending Requests</a>\n        <br><br>\n      <a href=\"/myacceptedrequests\"><strong>Accepted Requests</strong></a>\n        <br><br>\n      <h5>I Need Help</h5>\n    <a href=\"/myrequest\">My Pending Request</a>\n      <br><br>\n    <a href=\"/mypastrequests\">My Past Requests</a>\n      <br><br>\n      <a class='btn btn-primary' [routerLink]=\"['/request']\" value = \"Request\">Request A Tutor</a>\n        <br><br>\n    </div>\n    <div class = \"col-xs-10\">\n      <div *ngFor=\"let docs of documents\">\n        <accordion>\n            <accordion-group heading= \"Time of Request: {{docs.timerequest}} Subject: {{docs.subject}}     Topic: {{docs.topic}}      Name of Tutee: {{docs.tutoreename}}\">\n              <h4>Time Request Was Accepted: {{docs.timeaccept}}</h4>\n              <h4>Additional Information: {{docs.addinfo}}</h4>\n              <h4>Email: {{docs.tutoreeemail}} </h4>\n              <h4>Phone Number: {{docs.tutoreephonenumber}}</h4>\n            </accordion-group>\n\n        </accordion>\n\n      </div>\n\n\n\n    </div>\n</div>\n"
+module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd, th {\n    border: 1px solid #dddddd;\n    text-align: left;\n    padding: 8px;\n}\n\ntr:nth-child(even) {\n    background-color: #dddddd;\n}\n.col-xs-2{\n  border-right: 1px solid #dddddd;\n}\n</style>\n\n\n<h2 class='page-header'>Requests I Have Accepted</h2>\n<div class=\"data-list\">\n\n    <div class=\"col-xs-2\">\n      <h5>I Can Help</h5>\n      <a href=\"/dashboard\">Pending Requests</a>\n        <br><br>\n      <a href=\"/myacceptedrequests\"><strong>Accepted Requests</strong></a>\n        <br><br>\n      <h5>I Need Help</h5>\n    <a href=\"/myrequest\">My Pending Request</a>\n      <br><br>\n    <a href=\"/mypastrequests\">My Past Requests</a>\n      <br><br>\n      <a class='btn btn-primary' [routerLink]=\"['/request']\" value = \"Request\">Request A Tutor</a>\n        <br><br>\n    </div>\n    <div class = \"col-xs-10\">\n      <h4> You have accepted {{count}} requests</h4>\n      <div *ngFor=\"let docs of documents\">\n        <accordion>\n            <accordion-group heading= \"Time of Request: {{docs.timerequest}} Subject: {{docs.subject}}     Topic: {{docs.topic}}      Name of Tutee: {{docs.tutoreename}}\">\n              <h4>Time Request Was Accepted: {{docs.timeaccept}}</h4>\n              <h4>Additional Information: {{docs.addinfo}}</h4>\n              <h4>Email: {{docs.tutoreeemail}} </h4>\n              <h4>Phone Number: {{docs.tutoreephonenumber}}</h4>\n            </accordion-group>\n\n        </accordion>\n\n      </div>\n\n\n\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -856,6 +856,12 @@ var MyacceptedrequestsComponent = /** @class */ (function () {
         });
     }
     MyacceptedrequestsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.dataService.acceptedRequestsCount().subscribe(function (data) {
+            if (data > 0) {
+                _this.count = data;
+            }
+        });
     };
     MyacceptedrequestsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1173,7 +1179,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='user'>\n  <h2 class='page-header'>{{user.firstname}} {{user.lastname}}</h2>\n  <ul class='list-group'>\n    <li class='list-group-item'>School: {{user.school}}</li>\n    <li class='list-group-item'>Grade: {{user.grade}}th</li>\n    <li class='list-group-item'>Username: {{user.username}}</li>\n    <li class='list-group-item'>Email: {{user.email}}</li>\n    <li class='list-group-item'>Phone Number: {{user.phonenumber}}</li>\n  </ul>\n\n<a class='btn btn-primary' [routerLink]=\"['/update']\" value = \"Update\">Update</a>   <button class='btn' (click)=\"myModal.open()\"><h4>Delete Account</h4></button>\n  <modal #myModal>\n    <modal-content>\n      <h3>Are you sure you want to delete your account?</h3>\n    </modal-content>\n    <modal-footer>\n      <button class=\"btn btn-primary\" (click)=\"myModal.close()\">No</button><button class=\"btn btn-primary\" (click)=\"myModal.close()\" (click)=\"deleteUser(user._id)\" (click)=\"refresh()\" >Yes</button>\n    </modal-footer>\n  </modal>\n</div>\n"
+module.exports = "<div *ngIf='user'>\n  <h2 class='page-header'>{{user.firstname}} {{user.lastname}}</h2>\n  <ul class='list-group'>\n    <li class='list-group-item'>School: {{user.school}}</li>\n    <li class='list-group-item'>Grade: {{user.grade}}th</li>\n    <li class='list-group-item'>Username: {{user.username}}</li>\n    <li class='list-group-item'>Email: {{user.email}}</li>\n    <li class='list-group-item'>Phone Number: {{user.phonenumber}}</li>\n  </ul>\n\n<a class='btn btn-primary' [routerLink]=\"['/update']\" value = \"Update\">Update</a>   <button class='btn' (click)=\"myModal.open()\"><h4>Delete Account</h4></button>\n  <modal #myModal>\n    <modal-content>\n      <h3>Are you sure you want to delete your account?</h3>\n    </modal-content>\n    <modal-footer>\n      <button class=\"btn btn-primary\" (click)=\"myModal.close()\">No</button><button class=\"btn btn-primary\" (click)=\"myModal.close()\" (click)=\"deleteUser(user._id)\">Yes</button>\n    </modal-footer>\n  </modal>\n</div>\n"
 
 /***/ }),
 
@@ -1806,6 +1812,19 @@ var DataService = /** @class */ (function () {
         return this.http.get("https://localhost:3000/users/unreadrequests/" + username)
             .map(function (res) { return res.json(); });
     };
+    DataService.prototype.acceptedRequestsCount = function () {
+        var _this = this;
+        return this.authService.getProfile().flatMap(function (profile) {
+            _this.user = profile.user;
+            _this.username = profile.user.username;
+            //this.fetchData(this.username)
+            console.log(_this.user);
+            console.log(_this.username);
+            _this.username;
+            return _this.http.get("https://localhost:3000/users/acceptedrequestscount/" + _this.username)
+                .map(function (res) { return res.json(); });
+        });
+    };
     DataService.prototype.readRequests = function (id) {
         var headers = new Headers();
         headers.append("Content-Type", 'application/json');
@@ -1938,6 +1957,11 @@ var DataService = /** @class */ (function () {
             return false;
         });
         this.myAcceptedRequests().subscribe(function (profile) {
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
+        this.acceptedRequestsCount().subscribe(function (profile) {
         }, function (err) {
             console.log(err);
             return false;

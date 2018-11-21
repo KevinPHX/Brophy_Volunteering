@@ -17,8 +17,9 @@
     "body-parser": "^1.18.3",
     "brcypt": "^1.0.1",
     "cors": "*",
+    "crypto": "^1.0.1",
     "email-verification": "^0.4.6",
-    "express": "*",
+    "express": "^4.16.4",
     "get-json": "1.0.0",
     "https": "^1.0.0",
     "jquery": "^3.2.1",
@@ -32,12 +33,12 @@
     "password-reset": "^0.1.4",
     "password-reset-nodemailer": "0.0.1",
     "randombytes": "^2.0.6",
-    "request": "^2.81.0",
+    "request": "^2.88.0",
     "webpack": "^3.0.0"
   },
   "author": "Kevin Yin",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.18.6"
   }
 }

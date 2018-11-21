@@ -47,6 +47,18 @@ export class DataService implements OnInit {
     return this.http.get("https://localhost:3000/users/unreadrequests/" + username)
       .map(res => res.json())
   }
+  acceptedRequestsCount(){
+    return this.authService.getProfile().flatMap(profile => {
+      this.user = profile.user;
+      this.username = profile.user.username;
+      //this.fetchData(this.username)
+      console.log(this.user)
+      console.log(this.username);
+      this.username;
+      return this.http.get("https://localhost:3000/users/acceptedrequestscount/" + this.username)
+        .map(res => res.json())
+    })
+  }
   readRequests(id){
     let headers = new Headers();
     headers.append("Content-Type", 'application/json');
@@ -185,6 +197,12 @@ export class DataService implements OnInit {
        return false;
      });
      this.myAcceptedRequests().subscribe(profile => {
+     },
+     err => {
+       console.log(err);
+       return false;
+     });
+     this.acceptedRequestsCount().subscribe(profile => {
      },
      err => {
        console.log(err);

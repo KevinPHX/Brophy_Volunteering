@@ -40,6 +40,8 @@ nev.configure({
         text: 'Please confirm your account by clicking the following link: ${URL}'
     }
 }, function(error, options){
+  if (error)
+    console.log(error)
 });
 
 nev.generateTempUserModel(User);
@@ -52,7 +54,7 @@ nev.generateTempUserModel(User);
 
 
 //Register
-router.post('/register', ( req, res, next) => {
+router.post('/register', (req, res, next) => {
   let newUser = new User({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -65,7 +67,6 @@ router.post('/register', ( req, res, next) => {
     rating: 0,
   });
 
-  console.log(newUser.firstname)
 
 
 
@@ -97,6 +98,7 @@ router.post('/register', ( req, res, next) => {
 
   User.hashPassword(newUser, (err, user) => {
     if(err){
+      console.log(err)
       res.json({success:false, msg:"Failed to register user"});
     } else {
       res.json({success: true, msg:"User registered"});
@@ -163,6 +165,12 @@ router.get('/myacceptedrequests/:tutorusername', function ( req, res, next){
 ////////////////////////////////////////////////////////////////////////////////
 router.get("/unreadrequests/:tutoreeusername", function (req, res, next){
   db.collection('tutoree').count({tutoreeusername : req.params.tutoreeusername,read:false, type: "Completed"}, function(error, numOfDocs){
+    if(error) res.send(error);
+    res.json(numOfDocs)
+  })
+})
+router.get("/acceptedrequestscount/:tutorusername", function (req, res, next){
+  db.collection('tutor').count({tutorusername : req.params.tutorusername, type: "Completed"}, function(error, numOfDocs){
     if(error) res.send(error);
     res.json(numOfDocs)
   })
@@ -450,7 +458,6 @@ router.delete('/delete/:id', function(req, res, next){
         res.json(user);
     });
 });
-
 
 
 router.get('/email-verification/:URL', function(req, res){

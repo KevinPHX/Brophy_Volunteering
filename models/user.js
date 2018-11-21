@@ -86,15 +86,23 @@ module.exports.updateUser = function(newUser, callback){
 
 module.exports.hashPassword = function(newUser, callback){
   bcrypt.genSalt(10, (err, salt)=>{
+    if(err) {
+      console.log(err)
+    }
     console.log(newUser.firstname)
     console.log(newUser.password)
     bcrypt.hash(newUser.password, salt, (err, hash) => {
-      if(err) throw err;
+      if(err) {
+        throw err;
+        console.log(err)
+      }
       console.log(hash)
       newUser.password = hash;
+
       //newUser.save(callback);
     })
   })
+
 }
 
 

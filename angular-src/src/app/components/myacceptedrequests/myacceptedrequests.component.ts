@@ -23,9 +23,15 @@ data: Data[];
           console.log(data)
             this.documents = data;
         });
+
   }
 
   ngOnInit() {
+    this.dataService.acceptedRequestsCount().subscribe(data => {
+      if (data > 0){
+        this.count = data
+    }
+    })
   }
 
 
