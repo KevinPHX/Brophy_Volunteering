@@ -213,15 +213,12 @@ router.get('/leaderboard', function (req, res, next){
   });
 })
 router.post('/disablerating/:tutoreeid', function (req, res, next){
-  Tutoree.getTutoreeById(req.params.tutoreeid, function(err, tutoree){
-    db.collection('tutoree').update(
-      {tutoremail: tutoree.tutoremail, tutoreeusername: tutoree.tutoreeusername, timeaccept: tutoree.timeaccept},
+  db.collection('tutoree').update(
+      {_id: ObjectID(req.params.tutoreeid)},
       {$set: {rated: true}},
       function(err) {
         if (err) res.send(err);
     })
-  })
-
 })
 
 ////////////////////////////////////////////////////////////////////////////////
