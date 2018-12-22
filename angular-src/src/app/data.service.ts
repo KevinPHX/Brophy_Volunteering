@@ -107,18 +107,10 @@ export class DataService implements OnInit {
     headers.append("Content-Type", 'application/json');
     return this.http.post('https://localhost:3000/users/editrequest/' + id, user, {headers:headers})
     .map(res => res.json());
-    // return this.authService.getProfile().flatMap(profile => {
-    //   this.user = profile.user;
-    //   this.username = profile.user.username;
-    //   //this.fetchData(this.username)
-    //   console.log(this.user)
-    //   console.log(this.username);
-    //   this.username;
-    //   let headers = new Headers();
-    //   headers.append("Content-Type", 'application/json');
-    //   return this.http.post('https://localhost:3000/users/editrequest/' + this.username, user, {headers:headers})
-    //   .map(res => res.json());
-    // })
+  }
+  deleteRequests(username){
+    return this.http.delete('https://localhost:3000/users/deleterequests/'+username)
+        .map(res => res.json());
   }
   myRequest(){
     return this.authService.getProfile().flatMap(profile => {

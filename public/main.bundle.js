@@ -448,7 +448,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/forgot/forgot.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class='page-header'>Forgot</h2>\n<form (submit)='onForgotSubmit()'>\n  <div class='form-group'>\n    <label>Email</label>\n    <input type='text' class='form-control' [(ngModel)]='email' name='email'>\n  </div>\n  <input type='submit' class='btn btn-primary' value='Submit' >\n</form>\n"
+module.exports = "<h2 class='page-header'>Forgot Password</h2>\n<form (submit)='onForgotSubmit()'>\n  <div class='form-group'>\n    <label>Enter Your Email</label>\n    <input type='text' class='form-control' [(ngModel)]='email' name='email'>\n  </div>\n  <input type='submit' class='btn btn-primary' value='Submit' >\n</form>\n"
 
 /***/ }),
 
@@ -562,7 +562,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron\">\n    <h1>Welcome to Brophy Tutoring</h1>\n    <p>Connecting tutors to those in need</p>\n</div>\n  <div class = \"background\">\n    <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n    <!-- Indicators -->\n    <ol class=\"carousel-indicators\">\n      <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n    </ol>\n\n    <!-- Wrapper for slides -->\n    <div class=\"carousel-inner\">\n      <div class=\"item active\">\n        <img src=\"http://ss.marin.edu/sites/ss/files/TLC.jpg\" width = 100% >\n      </div>\n\n      <div class=\"item\">\n        <img src = \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Brophy_College_and_Chapel_%281%29.JPG/1200px-Brophy_College_and_Chapel_%281%29.JPG\" width = 100% >\n      </div>\n\n      <div class=\"item\">\n        <img src=\"https://www.k-state.edu/aac/images/tutoring/Tutoring.png\" width = 100%>\n      </div>\n\n    </div>\n\n    <!-- Left and right controls -->\n    <a class=\"left carousel-control\" href=\"#myCarousel\" data-slide=\"prev\">\n      <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      <span class=\"sr-only\">Previous</span>\n    </a>\n    <a class=\"right carousel-control\" href=\"#myCarousel\" data-slide=\"next\">\n      <span class=\"glyphicon glyphicon-chevron-right\"></span>\n      <span class=\"sr-only\">Next</span>\n    </a>\n  </div>\n\n  </div>\n"
+module.exports = "<div class=\"jumbotron\">\n    <h1>Welcome to Brophy Tutoring</h1>\n    <p>Connecting tutors to those in need</p>\n</div>\n  <div class = \"background\">\n    <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n    <!-- Indicators -->\n    <ol class=\"carousel-indicators\">\n      <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n    </ol>\n\n    <!-- Wrapper for slides -->\n    <div class=\"carousel-inner\">\n      <div class=\"item active\">\n        <img src=\"https://bbk12e1-cdn.myschoolcdn.com/750/photo/orig_photo398924_4464624.jpg?w=1920\" width = 100% >\n      </div>\n\n      <div class=\"item\">\n        <img src = \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Brophy_College_and_Chapel_%281%29.JPG/1200px-Brophy_College_and_Chapel_%281%29.JPG\" width = 100% >\n      </div>\n\n      <div class=\"item\">\n        <img src=\"https://bbk12e1-cdn.myschoolcdn.com/750/photo/orig_photo394658_4420131.jpg?w=1920\" width = 100%>\n      </div>\n\n    </div>\n\n    <!-- Left and right controls -->\n    <a class=\"left carousel-control\" href=\"#myCarousel\" data-slide=\"prev\">\n      <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      <span class=\"sr-only\">Previous</span>\n    </a>\n    <a class=\"right carousel-control\" href=\"#myCarousel\" data-slide=\"next\">\n      <span class=\"glyphicon glyphicon-chevron-right\"></span>\n      <span class=\"sr-only\">Next</span>\n    </a>\n  </div>\n\n  </div>\n"
 
 /***/ }),
 
@@ -858,9 +858,9 @@ var MyacceptedrequestsComponent = /** @class */ (function () {
     MyacceptedrequestsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.dataService.acceptedRequestsCount().subscribe(function (data) {
-            if (data > 0) {
-                _this.count = data;
-            }
+            //if (data > 0){
+            _this.count = data;
+            //}
         });
     };
     MyacceptedrequestsComponent = __decorate([
@@ -1179,7 +1179,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='user'>\n  <h2 class='page-header'>{{user.firstname}} {{user.lastname}}</h2>\n  <ul class='list-group'>\n    <li class='list-group-item'>School: {{user.school}}</li>\n    <li class='list-group-item'>Grade: {{user.grade}}th</li>\n    <li class='list-group-item'>Username: {{user.username}}</li>\n    <li class='list-group-item'>Email: {{user.email}}</li>\n    <li class='list-group-item'>Phone Number: {{user.phonenumber}}</li>\n  </ul>\n\n<a class='btn btn-primary' [routerLink]=\"['/update']\" value = \"Update\">Update</a>   <button class='btn' (click)=\"myModal.open()\"><h4>Delete Account</h4></button>\n  <modal #myModal>\n    <modal-content>\n      <h3>Are you sure you want to delete your account?</h3>\n    </modal-content>\n    <modal-footer>\n      <button class=\"btn btn-primary\" (click)=\"myModal.close()\">No</button><button class=\"btn btn-primary\" (click)=\"myModal.close()\" (click)=\"deleteUser(user._id)\">Yes</button>\n    </modal-footer>\n  </modal>\n</div>\n"
+module.exports = "<div *ngIf='user'>\n  <h2 class='page-header'>{{user.firstname}} {{user.lastname}}</h2>\n  <ul class='list-group'>\n    <li class='list-group-item'>School: {{user.school}}</li>\n    <li class='list-group-item'>Grade: {{user.grade}}th</li>\n    <li class='list-group-item'>Username: {{user.username}}</li>\n    <li class='list-group-item'>Email: {{user.email}}</li>\n    <li class='list-group-item'>Phone Number: {{user.phonenumber}}</li>\n    <li class='list-group-item'>Rating: {{user.rating}}</li>\n  </ul>\n\n<a class='btn btn-primary' [routerLink]=\"['/update']\" value = \"Update\">Update</a>   <button class='btn' (click)=\"myModal.open()\"><h4>Delete Account</h4></button>\n  <modal #myModal>\n    <modal-content>\n      <h3>Are you sure you want to delete your account?</h3>\n    </modal-content>\n    <modal-footer>\n      <button class=\"btn btn-primary\" (click)=\"myModal.close()\">No</button><button class=\"btn btn-primary\" (click)=\"myModal.close()\" (click)=\"deleteUser(user._id)\" (click)=\"deleteRequests(user.username)\">Yes</button>\n    </modal-footer>\n  </modal>\n</div>\n"
 
 /***/ }),
 
@@ -1189,8 +1189,9 @@ module.exports = "<div *ngIf='user'>\n  <h2 class='page-header'>{{user.firstname
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1203,8 +1204,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(authService, router) {
+    function ProfileComponent(dataService, authService, router) {
+        this.dataService = dataService;
         this.authService = authService;
         this.router = router;
     }
@@ -1231,16 +1234,23 @@ var ProfileComponent = /** @class */ (function () {
             console.log(err);
         });
     };
+    ProfileComponent.prototype.deleteRequests = function (username) {
+        this.dataService.deleteRequests(username).subscribe(function (data) {
+            console.log("account requests deleted");
+        }, function (err) {
+            console.log(err);
+        });
+    };
     ProfileComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-profile',
             template: __webpack_require__("../../../../../src/app/components/profile/profile.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/profile/profile.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["Router"]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"]) === "function" && _c || Object])
     ], ProfileComponent);
     return ProfileComponent;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=/Users/kevinyin/Documents/Programming/meanauthapp_3/angular-src/src/profile.component.js.map
@@ -1321,6 +1331,10 @@ var RegisterComponent = /** @class */ (function () {
             school: this.school,
         };
         this.authService.findUsers().subscribe(function (Data) {
+            if (!_this.validateService.validateRegister(user)) {
+                _this.flashMessages.show("Please fill in all fields", { cssClass: 'alert-danger', timeout: 3000 });
+                return false;
+            }
             for (var i = 0; i < Data.length; i++) {
                 if (user.email == Data[i].email) {
                     _this.flashMessages.show("Please use a different email", { cssClass: 'alert-danger', timeout: 3000 });
@@ -1334,10 +1348,6 @@ var RegisterComponent = /** @class */ (function () {
                     _this.router.navigate(['/register']);
                     return false;
                 }
-            }
-            if (!_this.validateService.validateRegister(user)) {
-                _this.flashMessages.show("Please fill in all fields", { cssClass: 'alert-danger', timeout: 3000 });
-                return false;
             }
             //new stuff
             var email = user.email;
@@ -1406,7 +1416,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/request/request.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class='page-header'>Request</h2>\n<form (submit)='requestHelp()'>\n  <div class='form-group'>\n    <h4>Subject</h4>\n    <input type='text' class='form-control' [(ngModel)]='subject' name='subject'>\n    <h4>Topic</h4>\n    <input type='text' class='form-control' [(ngModel)]='topic' name='topic'>\n    <h4>Additional Information</h4>\n    <input type='text' class='form-control' [(ngModel)]='addinfo' name='addinfo'>\n  </div>\n  <input type='submit' class='btn btn-primary'  value='Submit'><a class='btn btn-default' [routerLink]=\"['/dashboard']\" value = \"Cancel\">Cancel</a>\n</form>\n"
+module.exports = "<h2 class='page-header'>Request A Tutor</h2>\n<form (submit)='requestHelp()'>\n  <div class='form-group'>\n    <h4>Subject</h4>\n    <input type='text' class='form-control' [(ngModel)]='subject' name='subject' placeholder=\"i.e. Algebra I\">\n    <h4>Topic</h4>\n    <input type='text' class='form-control' [(ngModel)]='topic' name='topic' placeholder=\"i.e. Polynomials\">\n    <h4>Additional Information</h4>\n    <input type='text' class='form-control' [(ngModel)]='addinfo' name='addinfo'>\n  </div>\n  <input type='submit' class='btn btn-primary'  value='Submit'><a class='btn btn-default' [routerLink]=\"['/dashboard']\" value = \"Cancel\">Cancel</a>\n</form>\n"
 
 /***/ }),
 
@@ -1505,7 +1515,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/reset/reset.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class='page-header'>Reset Password</h2>\n<form (submit)='onResetSubmit()'>\n  <div class='form-group'>\n    <label>Password</label>\n    <input type='password' class='form-control' [(ngModel)]='password' name='password'>\n  </div>\n  <input type='submit' class='btn btn-primary' value='Submit'>\n</form>\n"
+module.exports = "<h2 class='page-header'>Reset Password</h2>\n<form (submit)='onResetSubmit()'>\n  <div class='form-group'>\n    <label>Enter New Password</label>\n    <input type='password' class='form-control' [(ngModel)]='password' name='password'>\n    <ng2-password-strength-bar\n                [passwordToCheck]=\"password\"\n                [barLabel]=\"barLabel\"\n                [barColors]=\"myColors\">\n            </ng2-password-strength-bar>\n  </div>\n  <input type='submit' class='btn btn-primary' value='Submit'>\n</form>\n"
 
 /***/ }),
 
@@ -1543,6 +1553,8 @@ var ResetComponent = /** @class */ (function () {
         this.router = router;
         this.flashMessage = flashMessage;
         this.http = http;
+        this.barLabel = "Password strength:";
+        this.myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
     }
     ResetComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1872,18 +1884,10 @@ var DataService = /** @class */ (function () {
         headers.append("Content-Type", 'application/json');
         return this.http.post('https://localhost:3000/users/editrequest/' + id, user, { headers: headers })
             .map(function (res) { return res.json(); });
-        // return this.authService.getProfile().flatMap(profile => {
-        //   this.user = profile.user;
-        //   this.username = profile.user.username;
-        //   //this.fetchData(this.username)
-        //   console.log(this.user)
-        //   console.log(this.username);
-        //   this.username;
-        //   let headers = new Headers();
-        //   headers.append("Content-Type", 'application/json');
-        //   return this.http.post('https://localhost:3000/users/editrequest/' + this.username, user, {headers:headers})
-        //   .map(res => res.json());
-        // })
+    };
+    DataService.prototype.deleteRequests = function (username) {
+        return this.http.delete('https://localhost:3000/users/deleterequests/' + username)
+            .map(function (res) { return res.json(); });
     };
     DataService.prototype.myRequest = function () {
         var _this = this;

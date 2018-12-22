@@ -455,7 +455,14 @@ router.delete('/delete/:id', function(req, res, next){
         res.json(user);
     });
 });
-
+router.delete('/deleterequests/:username', function(req, res, next){
+  db.collection('tutor').remove({tutorusername : req.params.username, type: "Completed"}, function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutoree').remove({tutoreeusername : req.params.username}, function(err) {
+  if (err) res.send(err);
+  });
+});
 
 router.get('/email-verification/:URL', function(req, res){
   var url = req.params.URL;

@@ -28,9 +28,9 @@ data: Data[];
 
   ngOnInit() {
     this.dataService.acceptedRequestsCount().subscribe(data => {
-      if (data > 0){
+      //if (data > 0){
         this.count = data
-    }
+    //}
     })
   }
 

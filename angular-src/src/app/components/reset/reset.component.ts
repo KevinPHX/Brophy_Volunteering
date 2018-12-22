@@ -6,6 +6,7 @@ import { ValidateService } from '../../services/validate.service';
 import { Http } from "@angular/http";
 import { BrowserModule } from '@angular/platform-browser';
 import {Data} from "../../Data";
+import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 
 @Component({
   selector: 'app-reset',
@@ -15,6 +16,8 @@ import {Data} from "../../Data";
 export class ResetComponent implements OnInit {
 password:String;
 data:Data[];
+public barLabel: string = "Password strength:";
+public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
   constructor(
     private authService:AuthService,
     private validateService:ValidateService,

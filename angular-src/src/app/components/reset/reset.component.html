@@ -1,8 +1,13 @@
 <h2 class='page-header'>Reset Password</h2>
 <form (submit)='onResetSubmit()'>
   <div class='form-group'>
-    <label>Password</label>
+    <label>Enter New Password</label>
     <input type='password' class='form-control' [(ngModel)]='password' name='password'>
+    <ng2-password-strength-bar
+                [passwordToCheck]="password"
+                [barLabel]="barLabel"
+                [barColors]="myColors">
+            </ng2-password-strength-bar>
   </div>
   <input type='submit' class='btn btn-primary' value='Submit'>
 </form>

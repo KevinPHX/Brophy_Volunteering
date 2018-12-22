@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import{DataService} from "../../data.service";
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import {ModalModule} from "ng2-modal";
@@ -11,7 +12,7 @@ export class ProfileComponent implements OnInit {
   user:Object;
   username:String;
   _id:String;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private dataService: DataService,private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => {
@@ -31,6 +32,13 @@ export class ProfileComponent implements OnInit {
       this.authService.logout();
       this.router.navigate(['/']);
       return false
+    }, err=> {
+      console.log(err);
+    })
+  }
+  deleteRequests(username){
+    this.dataService.deleteRequests(username).subscribe(data => {
+      console.log("account requests deleted")
     }, err=> {
       console.log(err);
     })

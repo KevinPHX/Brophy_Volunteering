@@ -41,6 +41,11 @@ onRegisterSubmit(){
 
     this.authService.findUsers().subscribe(Data => {
 
+      if(!this.validateService.validateRegister(user)){
+        this.flashMessages.show("Please fill in all fields", {cssClass:'alert-danger', timeout:3000});
+        return false;
+      }
+
       for (var i = 0; i < Data.length; i++){
         if (user.email == Data[i].email){
           this.flashMessages.show("Please use a different email", {cssClass:'alert-danger', timeout:3000});
@@ -55,10 +60,7 @@ onRegisterSubmit(){
           return false;
         }
       }
-      if(!this.validateService.validateRegister(user)){
-        this.flashMessages.show("Please fill in all fields", {cssClass:'alert-danger', timeout:3000});
-        return false;
-      }
+
       //new stuff
       let email = user.email
       let substring = email.substring(email.length - 17, email.length)
