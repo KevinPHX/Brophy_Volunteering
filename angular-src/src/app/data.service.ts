@@ -23,28 +23,28 @@ export class DataService implements OnInit {
       console.log(this.user)
       console.log(this.username);
       this.username;
-      return this.http.get("https://localhost:3000/users/match/" + this.username)
+      return this.http.get("http://localhost:3000/users/match/" + this.username)
         .map(res => res.json())
     })
   }
   rateTutor(email){
     let headers = new Headers();
     headers.append("Content-Type", 'application/json');
-    return this.http.post('https://localhost:3000/users/ratetutor/' + email, {headers:headers})
+    return this.http.post('http://localhost:3000/users/ratetutor/' + email, {headers:headers})
     .map(res => res.json());
   }
   disableRating(id){
     let headers = new Headers();
     headers.append("Content-Type", 'application/json');
-    return this.http.post('https://localhost:3000/users/disablerating/' + id, {headers:headers})
+    return this.http.post('http://localhost:3000/users/disablerating/' + id, {headers:headers})
     .map(res => res.json());
   }
   leaderBoard(){
-    return this.http.get("https://localhost:3000/users/leaderboard")
+    return this.http.get("http://localhost:3000/users/leaderboard")
       .map(res => res.json())
   }
   unreadRequests(username){
-    return this.http.get("https://localhost:3000/users/unreadrequests/" + username)
+    return this.http.get("http://localhost:3000/users/unreadrequests/" + username)
       .map(res => res.json())
   }
   acceptedRequestsCount(){
@@ -55,14 +55,14 @@ export class DataService implements OnInit {
       console.log(this.user)
       console.log(this.username);
       this.username;
-      return this.http.get("https://localhost:3000/users/acceptedrequestscount/" + this.username)
+      return this.http.get("http://localhost:3000/users/acceptedrequestscount/" + this.username)
         .map(res => res.json())
     })
   }
   readRequests(id){
     let headers = new Headers();
     headers.append("Content-Type", 'application/json');
-    return this.http.post('https://localhost:3000/users/readrequests/' + id, {headers:headers})
+    return this.http.post('http://localhost:3000/users/readrequests/' + id, {headers:headers})
     .map(res => res.json());
   }
 
@@ -76,7 +76,7 @@ export class DataService implements OnInit {
       this.username;
       let headers = new Headers();
       headers.append("Content-Type", 'application/json');
-      return this.http.post('https://localhost:3000/users/request/' + this.username, user, {headers:headers})
+      return this.http.post('http://localhost:3000/users/request/' + this.username, user, {headers:headers})
       .map(res => res.json());
 
     })
@@ -91,7 +91,7 @@ export class DataService implements OnInit {
       this.email;
       let headers = new Headers();
       headers.append("Content-Type", 'application/json');
-      return this.http.post('https://localhost:3000/users/accept/' + id + "/" + this.email, {headers:headers})
+      return this.http.post('http://localhost:3000/users/accept/' + id + "/" + this.email, {headers:headers})
       .map(res => res.json());
 
     })
@@ -99,17 +99,17 @@ export class DataService implements OnInit {
   cancelHelp(id){
     let headers = new Headers();
     headers.append("Content-Type", 'application/json');
-    return this.http.post('https://localhost:3000/users/cancel/' + id,{headers:headers})
+    return this.http.post('http://localhost:3000/users/cancel/' + id,{headers:headers})
     .map(res => res.json());
   }
   editRequest(id, user){
     let headers = new Headers();
     headers.append("Content-Type", 'application/json');
-    return this.http.post('https://localhost:3000/users/editrequest/' + id, user, {headers:headers})
+    return this.http.post('http://localhost:3000/users/editrequest/' + id, user, {headers:headers})
     .map(res => res.json());
   }
   deleteRequests(username){
-    return this.http.delete('https://localhost:3000/users/deleterequests/'+username)
+    return this.http.delete('http://localhost:3000/users/deleterequests/'+username)
         .map(res => res.json());
   }
   myRequest(){
@@ -122,7 +122,7 @@ export class DataService implements OnInit {
       this.username;
       let headers = new Headers();
       headers.append("Content-Type", 'application/json');
-      return this.http.get('https://localhost:3000/users/myrequest/' + this.username, {headers:headers})
+      return this.http.get('http://localhost:3000/users/myrequest/' + this.username, {headers:headers})
       .map(res => res.json());
 
     })
@@ -137,7 +137,7 @@ export class DataService implements OnInit {
       this.username;
       let headers = new Headers();
       headers.append("Content-Type", 'application/json');
-      return this.http.get('https://localhost:3000/users/mypastrequests/' + this.username, {headers:headers})
+      return this.http.get('http://localhost:3000/users/mypastrequests/' + this.username, {headers:headers})
       .map(res => res.json());
 
     })
@@ -152,7 +152,7 @@ export class DataService implements OnInit {
       this.username;
       let headers = new Headers();
       headers.append("Content-Type", 'application/json');
-      return this.http.get('https://localhost:3000/users/myacceptedrequests/' + this.username, {headers:headers})
+      return this.http.get('http://localhost:3000/users/myacceptedrequests/' + this.username, {headers:headers})
       .map(res => res.json());
 
     })

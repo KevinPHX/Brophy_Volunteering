@@ -1800,28 +1800,28 @@ var DataService = /** @class */ (function () {
             console.log(_this.user);
             console.log(_this.username);
             _this.username;
-            return _this.http.get("https://localhost:3000/users/match/" + _this.username)
+            return _this.http.get("http://localhost:3000/users/match/" + _this.username)
                 .map(function (res) { return res.json(); });
         });
     };
     DataService.prototype.rateTutor = function (email) {
         var headers = new Headers();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/ratetutor/' + email, { headers: headers })
+        return this.http.post('http://localhost:3000/users/ratetutor/' + email, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.disableRating = function (id) {
         var headers = new Headers();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/disablerating/' + id, { headers: headers })
+        return this.http.post('http://localhost:3000/users/disablerating/' + id, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.leaderBoard = function () {
-        return this.http.get("https://localhost:3000/users/leaderboard")
+        return this.http.get("http://localhost:3000/users/leaderboard")
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.unreadRequests = function (username) {
-        return this.http.get("https://localhost:3000/users/unreadrequests/" + username)
+        return this.http.get("http://localhost:3000/users/unreadrequests/" + username)
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.acceptedRequestsCount = function () {
@@ -1833,14 +1833,14 @@ var DataService = /** @class */ (function () {
             console.log(_this.user);
             console.log(_this.username);
             _this.username;
-            return _this.http.get("https://localhost:3000/users/acceptedrequestscount/" + _this.username)
+            return _this.http.get("http://localhost:3000/users/acceptedrequestscount/" + _this.username)
                 .map(function (res) { return res.json(); });
         });
     };
     DataService.prototype.readRequests = function (id) {
         var headers = new Headers();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/readrequests/' + id, { headers: headers })
+        return this.http.post('http://localhost:3000/users/readrequests/' + id, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.requestHelp = function (user) {
@@ -1854,7 +1854,7 @@ var DataService = /** @class */ (function () {
             _this.username;
             var headers = new Headers();
             headers.append("Content-Type", 'application/json');
-            return _this.http.post('https://localhost:3000/users/request/' + _this.username, user, { headers: headers })
+            return _this.http.post('http://localhost:3000/users/request/' + _this.username, user, { headers: headers })
                 .map(function (res) { return res.json(); });
         });
     };
@@ -1869,24 +1869,24 @@ var DataService = /** @class */ (function () {
             _this.email;
             var headers = new Headers();
             headers.append("Content-Type", 'application/json');
-            return _this.http.post('https://localhost:3000/users/accept/' + id + "/" + _this.email, { headers: headers })
+            return _this.http.post('http://localhost:3000/users/accept/' + id + "/" + _this.email, { headers: headers })
                 .map(function (res) { return res.json(); });
         });
     };
     DataService.prototype.cancelHelp = function (id) {
         var headers = new Headers();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/cancel/' + id, { headers: headers })
+        return this.http.post('http://localhost:3000/users/cancel/' + id, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.editRequest = function (id, user) {
         var headers = new Headers();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/editrequest/' + id, user, { headers: headers })
+        return this.http.post('http://localhost:3000/users/editrequest/' + id, user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.deleteRequests = function (username) {
-        return this.http.delete('https://localhost:3000/users/deleterequests/' + username)
+        return this.http.delete('http://localhost:3000/users/deleterequests/' + username)
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.myRequest = function () {
@@ -1900,7 +1900,7 @@ var DataService = /** @class */ (function () {
             _this.username;
             var headers = new Headers();
             headers.append("Content-Type", 'application/json');
-            return _this.http.get('https://localhost:3000/users/myrequest/' + _this.username, { headers: headers })
+            return _this.http.get('http://localhost:3000/users/myrequest/' + _this.username, { headers: headers })
                 .map(function (res) { return res.json(); });
         });
     };
@@ -1915,7 +1915,7 @@ var DataService = /** @class */ (function () {
             _this.username;
             var headers = new Headers();
             headers.append("Content-Type", 'application/json');
-            return _this.http.get('https://localhost:3000/users/mypastrequests/' + _this.username, { headers: headers })
+            return _this.http.get('http://localhost:3000/users/mypastrequests/' + _this.username, { headers: headers })
                 .map(function (res) { return res.json(); });
         });
     };
@@ -1930,7 +1930,7 @@ var DataService = /** @class */ (function () {
             _this.username;
             var headers = new Headers();
             headers.append("Content-Type", 'application/json');
-            return _this.http.get('https://localhost:3000/users/myacceptedrequests/' + _this.username, { headers: headers })
+            return _this.http.get('http://localhost:3000/users/myacceptedrequests/' + _this.username, { headers: headers })
                 .map(function (res) { return res.json(); });
         });
     };
@@ -2059,39 +2059,39 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/register', user, { headers: headers })
+        return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.updateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/update', user, { headers: headers })
+        return this.http.post('http://localhost:3000/users/update', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.deleteUser = function (id) {
-        return this.http.delete('https://localhost:3000/users/delete/' + id)
+        return this.http.delete('http://localhost:3000/users/delete/' + id)
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/authenticate', user, { headers: headers })
+        return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.forgotUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/forgot', user, { headers: headers })
+        return this.http.post('http://localhost:3000/users/forgot', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.resetUser = function (token, user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append("Content-Type", 'application/json');
-        return this.http.post('https://localhost:3000/users/reset/' + token, user, { headers: headers })
+        return this.http.post('http://localhost:3000/users/reset/' + token, user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.findUsers = function () {
-        return this.http.get("https://localhost:3000/users/contacts")
+        return this.http.get("http://localhost:3000/users/contacts")
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getProfile = function () {
@@ -2099,7 +2099,7 @@ var AuthService = /** @class */ (function () {
         this.loadToken();
         headers.append("Authorization", this.authToken);
         headers.append("Content-Type", 'application/json');
-        return this.http.get('https://localhost:3000/users/profile', { headers: headers })
+        return this.http.get('http://localhost:3000/users/profile', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.storeUserData = function (token, user) {

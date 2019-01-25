@@ -10,27 +10,8 @@ const url = "mongodb://localhost:27017/meanauth3";
 var mongojs = require("mongojs");
 var db = mongojs('users',['users']);
 var fs = require('fs');
-var https = require('https');
 
 
-
-var certOptions = {
-  key: fs.readFileSync(path.resolve('server.key')),
-  cert: fs.readFileSync(path.resolve('server.crt'))
-}
-
-
-// var key = fs.readFileSync('private.key');
-// var cert = fs.readFileSync( 'primary.crt' );
-// var ca = fs.readFileSync( 'encryption/intermediate.crt' );
-//
-// var options = {
-//   key: key,
-//   cert: cert,
-//   ca: ca
-// };
-//
-// https.createServer(options, app).listen(8080);
 
 //Connect To Database
 mongoose.createConnection(config.database);
@@ -86,13 +67,13 @@ app.get('/', (req,res) => {
  });
 
 //Start Server
-// app.listen(port, () => {
-//   console.log('Server started on port ' + port);
-// });
+app.listen(port, () => {
+  console.log('Server started on port ' + port);
+});
 
-https.createServer(certOptions, app).listen(3000, () => {
-   console.log('Https server started on port ' + port);
- })
+// https.createServer(certOptions, app).listen(3000, () => {
+//    console.log('Https server started on port ' + port);
+//  })
 //Express POST
 app.post("/dashboard",function (req, res) {
   var newId = req.body._id;
