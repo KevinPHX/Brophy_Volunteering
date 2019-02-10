@@ -1692,6 +1692,7 @@ var UpdateComponent = /** @class */ (function () {
             _this.phonenumber = profile.user.phonenumber;
             _this.email = profile.user.email;
             _this.password = profile.user.password;
+            _this.rating = profile.user.rating;
         }, function (err) {
             console.log(err);
             return false;
@@ -1720,6 +1721,7 @@ var UpdateComponent = /** @class */ (function () {
             username: this.username,
             password: this.password,
             school: this.school,
+            rating: this.rating
         };
         if (!this.validateService.validateRegister(user)) {
             this.flashMessages.show("Please fill in all fields", { cssClass: 'alert-danger', timeout: 3000 });
