@@ -65,6 +65,7 @@ router.post('/register', (req, res, next) => {
     password: req.body.password,
     school: req.body.school,
     rating: 0,
+    requests: 0,
   });
 
 
@@ -119,6 +120,7 @@ router.post('/update', (req, res, next) => {
     username: req.body.username,
     password: req.body.password,//add way to identify whether email is brophy/xavier. Use this:http://www.java2s.com/Tutorials/Javascript/Node.js_Tutorial/0050__Node.js_String_Functions.htm
     rating: req.body.rating,
+    requests: req.body.requests,
     });
 
     User.updateUser(newUser, (err, user) => {
@@ -323,6 +325,13 @@ router.post('/accept/:id/:email', function ( req, res, next){
                           }
                     })
 
+                    db.collection('users').update(
+                      {username: tutor.username},
+                      {$set: {requests: tutor.requests + 1}},
+                      function(err, users) {
+                        if (err) res.send(err);
+                        // res.json(users);
+                    })
 
 
                     db.collection('tutoree').update(
@@ -438,7 +447,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 
 
 router.get('/contacts', function(req, res, next){
-    db.users.find(function(err, users){
+    db.users.find().sort({"lastname": 1, "firstname":1}, function(err, users){
         if(err){
             res.send(err);
         }

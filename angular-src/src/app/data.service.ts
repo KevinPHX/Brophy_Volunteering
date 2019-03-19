@@ -59,6 +59,10 @@ export class DataService implements OnInit {
         .map(res => res.json())
     })
   }
+  userAcceptedRequestsCount(username){
+      return this.http.get("http://localhost:3000/users/acceptedrequestscount/" + username)
+        .map(res => res.json())
+  }
   readRequests(id){
     let headers = new Headers();
     headers.append("Content-Type", 'application/json');

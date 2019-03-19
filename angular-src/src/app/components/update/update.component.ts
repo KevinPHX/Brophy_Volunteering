@@ -23,6 +23,7 @@ export class UpdateComponent implements OnInit {
   password: String;
   school: String;
   rating:Number;
+  requests:Number;
   constructor(private validateService: ValidateService, private flashMessages:FlashMessagesService, private authService:AuthService, private router:Router, private http:Http) { }
 
   ngOnInit() {
@@ -37,6 +38,7 @@ export class UpdateComponent implements OnInit {
       this.email = profile.user.email;
       this.password = profile.user.password;
       this.rating = profile.user.rating;
+      this.requests = profile.user.requests;
     },
     err => {
       console.log(err);
@@ -67,7 +69,8 @@ export class UpdateComponent implements OnInit {
       username: this.username,
       password: this.password,
       school: this.school,
-      rating: this.rating
+      rating: this.rating,
+      requests: this.requests
       }
       if(!this.validateService.validateRegister(user)){
         this.flashMessages.show("Please fill in all fields", {cssClass:'alert-danger', timeout:3000});

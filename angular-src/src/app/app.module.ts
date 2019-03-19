@@ -31,6 +31,7 @@ import { MypastrequestsComponent } from './components/mypastrequests/mypastreque
 import { MyacceptedrequestsComponent } from './components/myacceptedrequests/myacceptedrequests.component';
 import { EditrequestComponent } from './components/editrequest/editrequest.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { AdministratorComponent } from './components/administrator/administrator.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
   {path:'mypastrequests', component: MypastrequestsComponent},
   {path:'editrequest/:id', component: EditrequestComponent},
   {path:'leaderboard', component: LeaderboardComponent},
+  {path:'administrator', component: AdministratorComponent},
 ]
 
 @NgModule({
@@ -67,6 +69,7 @@ const appRoutes: Routes = [
     MyacceptedrequestsComponent,
     EditrequestComponent,
     LeaderboardComponent,
+    AdministratorComponent,
   ],
   imports: [
     BrowserModule,

@@ -116,12 +116,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_myacceptedrequests_myacceptedrequests_component__ = __webpack_require__("../../../../../src/app/components/myacceptedrequests/myacceptedrequests.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__ = __webpack_require__("../../../../../src/app/components/editrequest/editrequest.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_leaderboard_leaderboard_component__ = __webpack_require__("../../../../../src/app/components/leaderboard/leaderboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_administrator_administrator_component__ = __webpack_require__("../../../../../src/app/components/administrator/administrator.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -168,6 +170,7 @@ var appRoutes = [
     { path: 'mypastrequests', component: __WEBPACK_IMPORTED_MODULE_27__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */] },
     { path: 'editrequest/:id', component: __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__["a" /* EditrequestComponent */] },
     { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_30__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] },
+    { path: 'administrator', component: __WEBPACK_IMPORTED_MODULE_31__components_administrator_administrator_component__["a" /* AdministratorComponent */] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -191,6 +194,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_28__components_myacceptedrequests_myacceptedrequests_component__["a" /* MyacceptedrequestsComponent */],
                 __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__["a" /* EditrequestComponent */],
                 __WEBPACK_IMPORTED_MODULE_30__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__components_administrator_administrator_component__["a" /* AdministratorComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -214,6 +218,86 @@ var AppModule = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=/Users/kevinyin/Documents/Programming/meanauthapp_3/angular-src/src/app.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/administrator/administrator.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/administrator/administrator.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd {\n    border-bottom: 1px solid #000000;\n    text-align: left;\n    padding: 8px;\n    width: 33%;\n}\n\nth {\n  text-align: left;\n  padding: 8px;\n  width: 33%;\n}\n\n\n\n</style>\n<h2 class='page-header'>Leaderboard</h2>\n<div class=\"data-list\">\n  <table>\n    <tr>\n      <th><h3>Name</h3></th>\n      <th><h3>Grade</h3></th>\n      <th><h3>Requests Accepted</h3></th>\n    </tr>\n  </table>\n  <div *ngFor=\"let docs of documents\">\n    <table>\n    <tr>\n      <td><h4>{{docs.firstname}} {{docs.lastname}}</h4></td>\n      <td><h4>{{docs.grade}}</h4></td>\n      <td><h4>{{docs.requests}}</h4></td>\n    </tr>\n  </table>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/administrator/administrator.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdministratorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var AdministratorComponent = /** @class */ (function () {
+    function AdministratorComponent(dataService, authService, http, router) {
+        this.dataService = dataService;
+        this.authService = authService;
+        this.http = http;
+        this.router = router;
+    }
+    AdministratorComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.findUsers().subscribe(function (data) {
+            _this.documents = data;
+        });
+    };
+    AdministratorComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-administrator',
+            template: __webpack_require__("../../../../../src/app/components/administrator/administrator.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/administrator/administrator.component.css")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"]) === "function" && _d || Object])
+    ], AdministratorComponent);
+    return AdministratorComponent;
+    var _a, _b, _c, _d;
+}());
+
+//# sourceMappingURL=/Users/kevinyin/Documents/Programming/meanauthapp_3/angular-src/src/administrator.component.js.map
 
 /***/ }),
 
@@ -1693,6 +1777,7 @@ var UpdateComponent = /** @class */ (function () {
             _this.email = profile.user.email;
             _this.password = profile.user.password;
             _this.rating = profile.user.rating;
+            _this.requests = profile.user.requests;
         }, function (err) {
             console.log(err);
             return false;
@@ -1721,7 +1806,8 @@ var UpdateComponent = /** @class */ (function () {
             username: this.username,
             password: this.password,
             school: this.school,
-            rating: this.rating
+            rating: this.rating,
+            requests: this.requests
         };
         if (!this.validateService.validateRegister(user)) {
             this.flashMessages.show("Please fill in all fields", { cssClass: 'alert-danger', timeout: 3000 });
@@ -1838,6 +1924,10 @@ var DataService = /** @class */ (function () {
             return _this.http.get("http://localhost:3000/users/acceptedrequestscount/" + _this.username)
                 .map(function (res) { return res.json(); });
         });
+    };
+    DataService.prototype.userAcceptedRequestsCount = function (username) {
+        return this.http.get("http://localhost:3000/users/acceptedrequestscount/" + username)
+            .map(function (res) { return res.json(); });
     };
     DataService.prototype.readRequests = function (id) {
         var headers = new Headers();

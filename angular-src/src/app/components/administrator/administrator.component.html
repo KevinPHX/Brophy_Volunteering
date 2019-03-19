@@ -1,0 +1,42 @@
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    border-bottom: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+    width: 33%;
+}
+
+th {
+  text-align: left;
+  padding: 8px;
+  width: 33%;
+}
+
+
+
+</style>
+<h2 class='page-header'>Administrator</h2>
+<div class="data-list">
+  <table>
+    <tr>
+      <th><h3>Name</h3></th>
+      <th><h3>Grade</h3></th>
+      <th><h3>Requests Accepted</h3></th>
+    </tr>
+  </table>
+  <div *ngFor="let docs of documents">
+    <table>
+    <tr>
+      <td><h4>{{docs.firstname}} {{docs.lastname}}</h4></td>
+      <td><h4>{{docs.grade}}</h4></td>
+      <td><h4>{{docs.requests}}</h4></td>
+    </tr>
+  </table>
+  </div>
+</div>
