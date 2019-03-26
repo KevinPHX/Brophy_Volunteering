@@ -164,6 +164,12 @@ router.get('/myacceptedrequests/:tutorusername', function ( req, res, next){
   res.json(users);
   });
 })
+router.get('/checkrequest/:tutoreeid', function ( req, res, next){
+  db.collection('tutoree').find({_id: ObjectID(req.params.tutoreeid)}).toArray(function(err, tutoree) {
+  if (err) res.send(err);
+  res.json(tutoree);
+  });
+})
 ////////////////////////////////////////////////////////////////////////////////
 router.get("/unreadrequests/:tutoreeusername", function (req, res, next){
   db.collection('tutoree').count({tutoreeusername : req.params.tutoreeusername,read:false, type: "Completed"}, function(error, numOfDocs){
@@ -180,8 +186,11 @@ router.get("/acceptedrequestscount/:tutorusername", function (req, res, next){
 
 router.post("/readrequests/:tutoreeid", function (req, res, next){
     Tutoree.getTutoreeById(req.params.tutoreeid, function(err, tutoree){
-      db.collection('tutoree').update({tutoreeusername: tutoree.tutoreeusername, timerequest: tutoree.timerequest, read:false},
-      {$set: {read:true}})
+      db.collection('tutoree').update({_id: ObjectID(req.params.tutoreeid), read:false},
+      {$set: {read:true}},
+      function(err) {
+        if (err) res.send(err);
+    })
     })
 
 })

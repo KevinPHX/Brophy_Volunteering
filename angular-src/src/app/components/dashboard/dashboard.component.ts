@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {AccordionModule} from "ng2-accordion";
 import {ModalModule} from "ng2-modal";
+import { FlashMessagesService } from "angular2-flash-messages"
+
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +23,7 @@ user: Object;
 subject:String;
 data: Data[];
 
-  constructor(private dataService: DataService, private authService:AuthService, private http: Http, private router:Router) {
+  constructor(private dataService: DataService, private authService:AuthService, private http: Http, private router:Router, private flashMessages:FlashMessagesService) {
     this.dataService.findMatches()
         .subscribe(data => {
           console.log(data)
@@ -39,12 +41,21 @@ data: Data[];
 
 
 acceptHelp(id){
-this.dataService.acceptHelp(id).subscribe(data => {
-  console.log("request accepted")
-  window.location.reload();
-}, err=> {
-  console.log(err);
-})
+  this.dataService.checkRequest(id).subscribe(request => {
+    console.log(request[0])
+    if (request[0].type == "Completed"){
+      window.location.reload();
+      this.flashMessages.show("This request has already been accepted", {cssClass:'alert-danger', timeout:3000});
+      return false;
+    } else {
+      this.dataService.acceptHelp(id).subscribe(data => {
+        console.log("request accepted")
+        window.location.reload();
+      }, err=> {
+        console.log(err);
+      })
+    }
+  })
 }
 
 

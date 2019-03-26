@@ -337,6 +337,8 @@ module.exports = "<style>\n.accordion {\n    background-color: #eee;\n    color:
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_flash_messages__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -352,13 +354,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent(dataService, authService, http, router) {
+    function DashboardComponent(dataService, authService, http, router, flashMessages) {
         var _this = this;
         this.dataService = dataService;
         this.authService = authService;
         this.http = http;
         this.router = router;
+        this.flashMessages = flashMessages;
         this.dataService.findMatches()
             .subscribe(function (data) {
             console.log(data);
@@ -368,11 +372,22 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.ngOnInit = function () {
     };
     DashboardComponent.prototype.acceptHelp = function (id) {
-        this.dataService.acceptHelp(id).subscribe(function (data) {
-            console.log("request accepted");
-            window.location.reload();
-        }, function (err) {
-            console.log(err);
+        var _this = this;
+        this.dataService.checkRequest(id).subscribe(function (request) {
+            console.log(request[0]);
+            if (request[0].type == "Completed") {
+                window.location.reload();
+                _this.flashMessages.show("This request has already been accepted", { cssClass: 'alert-danger', timeout: 3000 });
+                return false;
+            }
+            else {
+                _this.dataService.acceptHelp(id).subscribe(function (data) {
+                    console.log("request accepted");
+                    window.location.reload();
+                }, function (err) {
+                    console.log(err);
+                });
+            }
         });
     };
     DashboardComponent = __decorate([
@@ -382,10 +397,10 @@ var DashboardComponent = /** @class */ (function () {
             styles: [__webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.css")],
             providers: [__WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["Router"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angular2_flash_messages__["FlashMessagesService"]) === "function" && _e || Object])
     ], DashboardComponent);
     return DashboardComponent;
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=/Users/kevinyin/Documents/Programming/meanauthapp_3/angular-src/src/dashboard.component.js.map
@@ -1928,6 +1943,10 @@ var DataService = /** @class */ (function () {
     };
     DataService.prototype.userAcceptedRequestsCount = function (username) {
         return this.http.get("http://localhost:3000/users/acceptedrequestscount/" + username)
+            .map(function (res) { return res.json(); });
+    };
+    DataService.prototype.checkRequest = function (id) {
+        return this.http.get("http://localhost:3000/users/checkrequest/" + id)
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.readRequests = function (id) {
