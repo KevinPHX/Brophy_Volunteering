@@ -41,6 +41,7 @@ data: Data[];
 acceptHelp(id){
 this.dataService.acceptHelp(id).subscribe(data => {
   console.log("request accepted")
+  window.location.reload();
 }, err=> {
   console.log(err);
 })

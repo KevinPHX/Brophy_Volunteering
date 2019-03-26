@@ -370,6 +370,7 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.acceptHelp = function (id) {
         this.dataService.acceptHelp(id).subscribe(function (data) {
             console.log("request accepted");
+            window.location.reload();
         }, function (err) {
             console.log(err);
         });
