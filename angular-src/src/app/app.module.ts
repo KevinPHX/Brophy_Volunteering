@@ -77,9 +77,6 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD_psTAXcXV9eR4FzF_BFe59jDFMAbVM5k'
-    }),
     Ng2SearchPipeModule,
     AccordionModule,
     ModalModule,

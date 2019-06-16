@@ -86,37 +86,36 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_search_filter__ = __webpack_require__("../../../../ng2-search-filter/ng2-search-filter.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_accordion__ = __webpack_require__("../../../../ng2-accordion/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_accordion___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_ng2_accordion__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_modal__ = __webpack_require__("../../../../ng2-modal/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_ng2_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_password_strength_bar__ = __webpack_require__("../../../../ng2-password-strength-bar/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_password_strength_bar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ng2_password_strength_bar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_register_register_component__ = __webpack_require__("../../../../../src/app/components/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_update_update_component__ = __webpack_require__("../../../../../src/app/components/update/update.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_forgot_forgot_component__ = __webpack_require__("../../../../../src/app/components/forgot/forgot.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_reset_reset_component__ = __webpack_require__("../../../../../src/app/components/reset/reset.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_request_request_component__ = __webpack_require__("../../../../../src/app/components/request/request.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_myrequest_myrequest_component__ = __webpack_require__("../../../../../src/app/components/myrequest/myrequest.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_mypastrequests_mypastrequests_component__ = __webpack_require__("../../../../../src/app/components/mypastrequests/mypastrequests.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_myacceptedrequests_myacceptedrequests_component__ = __webpack_require__("../../../../../src/app/components/myacceptedrequests/myacceptedrequests.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__ = __webpack_require__("../../../../../src/app/components/editrequest/editrequest.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_leaderboard_leaderboard_component__ = __webpack_require__("../../../../../src/app/components/leaderboard/leaderboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_administrator_administrator_component__ = __webpack_require__("../../../../../src/app/components/administrator/administrator.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_search_filter__ = __webpack_require__("../../../../ng2-search-filter/ng2-search-filter.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_accordion__ = __webpack_require__("../../../../ng2-accordion/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_accordion___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ng2_accordion__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_modal__ = __webpack_require__("../../../../ng2-modal/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_ng2_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_password_strength_bar__ = __webpack_require__("../../../../ng2-password-strength-bar/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_password_strength_bar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_ng2_password_strength_bar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__ = __webpack_require__("../../../../../src/app/components/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_update_update_component__ = __webpack_require__("../../../../../src/app/components/update/update.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_forgot_forgot_component__ = __webpack_require__("../../../../../src/app/components/forgot/forgot.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_reset_reset_component__ = __webpack_require__("../../../../../src/app/components/reset/reset.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_request_request_component__ = __webpack_require__("../../../../../src/app/components/request/request.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_myrequest_myrequest_component__ = __webpack_require__("../../../../../src/app/components/myrequest/myrequest.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_mypastrequests_mypastrequests_component__ = __webpack_require__("../../../../../src/app/components/mypastrequests/mypastrequests.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_myacceptedrequests_myacceptedrequests_component__ = __webpack_require__("../../../../../src/app/components/myacceptedrequests/myacceptedrequests.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_editrequest_editrequest_component__ = __webpack_require__("../../../../../src/app/components/editrequest/editrequest.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_leaderboard_leaderboard_component__ = __webpack_require__("../../../../../src/app/components/leaderboard/leaderboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_administrator_administrator_component__ = __webpack_require__("../../../../../src/app/components/administrator/administrator.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -154,23 +153,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
 var appRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_14__components_home_home_component__["a" /* HomeComponent */] },
-    { path: 'register', component: __WEBPACK_IMPORTED_MODULE_13__components_register_register_component__["a" /* RegisterComponent */] },
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_12__components_login_login_component__["a" /* LoginComponent */] },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_15__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_16__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'update', component: __WEBPACK_IMPORTED_MODULE_22__components_update_update_component__["a" /* UpdateComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'forgot', component: __WEBPACK_IMPORTED_MODULE_23__components_forgot_forgot_component__["a" /* ForgotComponent */] },
-    { path: 'reset/:token', component: __WEBPACK_IMPORTED_MODULE_24__components_reset_reset_component__["a" /* ResetComponent */] },
-    { path: 'request', component: __WEBPACK_IMPORTED_MODULE_25__components_request_request_component__["a" /* RequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'myacceptedrequests', component: __WEBPACK_IMPORTED_MODULE_28__components_myacceptedrequests_myacceptedrequests_component__["a" /* MyacceptedrequestsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'myrequest', component: __WEBPACK_IMPORTED_MODULE_26__components_myrequest_myrequest_component__["a" /* MyrequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'mypastrequests', component: __WEBPACK_IMPORTED_MODULE_27__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'editrequest/:id', component: __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__["a" /* EditrequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_30__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] },
-    { path: 'administrator', component: __WEBPACK_IMPORTED_MODULE_31__components_administrator_administrator_component__["a" /* AdministratorComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__["a" /* HomeComponent */] },
+    { path: 'register', component: __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__["a" /* RegisterComponent */] },
+    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__["a" /* LoginComponent */] },
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'update', component: __WEBPACK_IMPORTED_MODULE_21__components_update_update_component__["a" /* UpdateComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'forgot', component: __WEBPACK_IMPORTED_MODULE_22__components_forgot_forgot_component__["a" /* ForgotComponent */] },
+    { path: 'reset/:token', component: __WEBPACK_IMPORTED_MODULE_23__components_reset_reset_component__["a" /* ResetComponent */] },
+    { path: 'request', component: __WEBPACK_IMPORTED_MODULE_24__components_request_request_component__["a" /* RequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'myacceptedrequests', component: __WEBPACK_IMPORTED_MODULE_27__components_myacceptedrequests_myacceptedrequests_component__["a" /* MyacceptedrequestsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'myrequest', component: __WEBPACK_IMPORTED_MODULE_25__components_myrequest_myrequest_component__["a" /* MyrequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'mypastrequests', component: __WEBPACK_IMPORTED_MODULE_26__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'editrequest/:id', component: __WEBPACK_IMPORTED_MODULE_28__components_editrequest_editrequest_component__["a" /* EditrequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_29__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] },
+    { path: 'administrator', component: __WEBPACK_IMPORTED_MODULE_30__components_administrator_administrator_component__["a" /* AdministratorComponent */] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -178,40 +176,37 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_navbar_navbar_component__["a" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__components_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__components_update_update_component__["a" /* UpdateComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__components_forgot_forgot_component__["a" /* ForgotComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_reset_reset_component__["a" /* ResetComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_request_request_component__["a" /* RequestComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_myrequest_myrequest_component__["a" /* MyrequestComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_myacceptedrequests_myacceptedrequests_component__["a" /* MyacceptedrequestsComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__["a" /* EditrequestComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__components_administrator_administrator_component__["a" /* AdministratorComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__components_navbar_navbar_component__["a" /* NavbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__components_update_update_component__["a" /* UpdateComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__components_forgot_forgot_component__["a" /* ForgotComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__components_reset_reset_component__["a" /* ResetComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_request_request_component__["a" /* RequestComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_myrequest_myrequest_component__["a" /* MyrequestComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_myacceptedrequests_myacceptedrequests_component__["a" /* MyacceptedrequestsComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__components_editrequest_editrequest_component__["a" /* EditrequestComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__components_administrator_administrator_component__["a" /* AdministratorComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["HttpModule"],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["RouterModule"].forRoot(appRoutes),
-                __WEBPACK_IMPORTED_MODULE_19_angular2_flash_messages__["FlashMessagesModule"],
-                __WEBPACK_IMPORTED_MODULE_5__agm_core__["a" /* AgmCoreModule */].forRoot({
-                    apiKey: 'AIzaSyD_psTAXcXV9eR4FzF_BFe59jDFMAbVM5k'
-                }),
-                __WEBPACK_IMPORTED_MODULE_6_ng2_search_filter__["a" /* Ng2SearchPipeModule */],
-                __WEBPACK_IMPORTED_MODULE_7_ng2_accordion__["AccordionModule"],
-                __WEBPACK_IMPORTED_MODULE_8_ng2_modal__["ModalModule"],
-                __WEBPACK_IMPORTED_MODULE_9_ng2_password_strength_bar__["PasswordStrengthBarModule"],
+                __WEBPACK_IMPORTED_MODULE_18_angular2_flash_messages__["FlashMessagesModule"],
+                __WEBPACK_IMPORTED_MODULE_5_ng2_search_filter__["a" /* Ng2SearchPipeModule */],
+                __WEBPACK_IMPORTED_MODULE_6_ng2_accordion__["AccordionModule"],
+                __WEBPACK_IMPORTED_MODULE_7_ng2_modal__["ModalModule"],
+                __WEBPACK_IMPORTED_MODULE_8_ng2_password_strength_bar__["PasswordStrengthBarModule"],
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_17__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_18__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_21__data_service__["a" /* DataService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_16__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_17__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_20__data_service__["a" /* DataService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
