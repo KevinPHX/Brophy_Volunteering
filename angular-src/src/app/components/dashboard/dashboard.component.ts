@@ -43,7 +43,7 @@ data: Data[];
 acceptHelp(id){
   this.dataService.checkRequest(id).subscribe(request => {
     console.log(request[0])
-    if (request[0].type == "Completed"){
+    if (request[0].type == "Completed" || request[0].type == "Cancelled"){
       window.location.reload();
       this.flashMessages.show("This request has already been accepted", {cssClass:'alert-danger', timeout:3000});
       return false;

@@ -161,14 +161,14 @@ var appRoutes = [
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_12__components_login_login_component__["a" /* LoginComponent */] },
     { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_15__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_16__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'update', component: __WEBPACK_IMPORTED_MODULE_22__components_update_update_component__["a" /* UpdateComponent */] },
+    { path: 'update', component: __WEBPACK_IMPORTED_MODULE_22__components_update_update_component__["a" /* UpdateComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'forgot', component: __WEBPACK_IMPORTED_MODULE_23__components_forgot_forgot_component__["a" /* ForgotComponent */] },
     { path: 'reset/:token', component: __WEBPACK_IMPORTED_MODULE_24__components_reset_reset_component__["a" /* ResetComponent */] },
-    { path: 'request', component: __WEBPACK_IMPORTED_MODULE_25__components_request_request_component__["a" /* RequestComponent */] },
-    { path: 'myacceptedrequests', component: __WEBPACK_IMPORTED_MODULE_28__components_myacceptedrequests_myacceptedrequests_component__["a" /* MyacceptedrequestsComponent */] },
-    { path: 'myrequest', component: __WEBPACK_IMPORTED_MODULE_26__components_myrequest_myrequest_component__["a" /* MyrequestComponent */] },
-    { path: 'mypastrequests', component: __WEBPACK_IMPORTED_MODULE_27__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */] },
-    { path: 'editrequest/:id', component: __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__["a" /* EditrequestComponent */] },
+    { path: 'request', component: __WEBPACK_IMPORTED_MODULE_25__components_request_request_component__["a" /* RequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'myacceptedrequests', component: __WEBPACK_IMPORTED_MODULE_28__components_myacceptedrequests_myacceptedrequests_component__["a" /* MyacceptedrequestsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'myrequest', component: __WEBPACK_IMPORTED_MODULE_26__components_myrequest_myrequest_component__["a" /* MyrequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'mypastrequests', component: __WEBPACK_IMPORTED_MODULE_27__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'editrequest/:id', component: __WEBPACK_IMPORTED_MODULE_29__components_editrequest_editrequest_component__["a" /* EditrequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_30__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] },
     { path: 'administrator', component: __WEBPACK_IMPORTED_MODULE_31__components_administrator_administrator_component__["a" /* AdministratorComponent */] },
 ];
@@ -375,7 +375,7 @@ var DashboardComponent = /** @class */ (function () {
         var _this = this;
         this.dataService.checkRequest(id).subscribe(function (request) {
             console.log(request[0]);
-            if (request[0].type == "Completed") {
+            if (request[0].type == "Completed" || request[0].type == "Cancelled") {
                 window.location.reload();
                 _this.flashMessages.show("This request has already been accepted", { cssClass: 'alert-danger', timeout: 3000 });
                 return false;
