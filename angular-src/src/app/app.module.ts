@@ -48,7 +48,7 @@ const appRoutes: Routes = [
   {path:'mypastrequests', component: MypastrequestsComponent, canActivate:[AuthGuard]},
   {path:'editrequest/:id', component: EditrequestComponent, canActivate:[AuthGuard]},
   {path:'leaderboard', component: LeaderboardComponent},
-  {path:'administrator', component: AdministratorComponent},
+  {path:'administrator', component: AdministratorComponent, canActivate:[AuthGuard]},
 ]
 
 @NgModule({

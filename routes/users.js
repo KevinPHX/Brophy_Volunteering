@@ -132,6 +132,38 @@ router.post('/update', (req, res, next) => {
     })
 })
 
+router.post('/godbutton', function (req, res, next){
+  db.collection('users').remove({grade: "12"}, function(err){
+      if(err){
+          res.send(err);
+      }
+  });
+  db.collection('users').update(
+    {grade : "9"},
+    {$set: {grade:"10"}},
+  function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('users').update(
+    {grade : "10"},
+    {$set: {grade:"11"}},
+  function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('users').update(
+    {grade : "11"},
+    {$set: {grade:"12"}},
+  function(err) {
+  if (err) res.send(err);
+  });
+
+  db.collection('users').update(
+    {},
+    {$set: {requests:0}},
+  function(err) {
+  if (err) res.send(err);
+  });
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // router.get('/filter/:subject', function ( req, res, next){

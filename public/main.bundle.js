@@ -168,7 +168,7 @@ var appRoutes = [
     { path: 'mypastrequests', component: __WEBPACK_IMPORTED_MODULE_26__components_mypastrequests_mypastrequests_component__["a" /* MypastrequestsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'editrequest/:id', component: __WEBPACK_IMPORTED_MODULE_28__components_editrequest_editrequest_component__["a" /* EditrequestComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_29__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] },
-    { path: 'administrator', component: __WEBPACK_IMPORTED_MODULE_30__components_administrator_administrator_component__["a" /* AdministratorComponent */] },
+    { path: 'administrator', component: __WEBPACK_IMPORTED_MODULE_30__components_administrator_administrator_component__["a" /* AdministratorComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -237,7 +237,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/administrator/administrator.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd {\n    border-bottom: 1px solid #000000;\n    text-align: left;\n    padding: 8px;\n    width: 33%;\n}\n\nth {\n  text-align: left;\n  padding: 8px;\n  width: 33%;\n}\n\n\n\n</style>\n<h2 class='page-header'>Administrator</h2>\n<div class=\"data-list\">\n  <table>\n    <tr>\n      <th><h3>Name</h3></th>\n      <th><h3>Grade</h3></th>\n      <th><h3>Requests Accepted</h3></th>\n    </tr>\n  </table>\n  <div *ngFor=\"let docs of documents\">\n    <table>\n    <tr>\n      <td><h4>{{docs.firstname}} {{docs.lastname}}</h4></td>\n      <td><h4>{{docs.grade}}</h4></td>\n      <td><h4>{{docs.requests}}</h4></td>\n    </tr>\n  </table>\n  </div>\n</div>\n"
+module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd {\n    border-bottom: 1px solid #000000;\n    text-align: left;\n    padding: 8px;\n    width: 33%;\n}\n\nth {\n  text-align: left;\n  padding: 8px;\n  width: 33%;\n}\n\n\n\n</style>\n<h2 class='page-header'>Administrator</h2>\n<a class='btn btn-primary' (click)='godButtonClick()' value = \"godbutton\">Reset and Update</a>\n<div class=\"data-list\">\n  <table>\n    <tr>\n      <th><h3>Name</h3></th>\n      <th><h3>Grade</h3></th>\n      <th><h3>Requests Accepted</h3></th>\n    </tr>\n  </table>\n  <div *ngFor=\"let docs of documents\">\n    <table>\n    <tr>\n      <td><h4>{{docs.firstname}} {{docs.lastname}}</h4></td>\n      <td><h4>{{docs.grade}}</h4></td>\n      <td><h4>{{docs.requests}}</h4></td>\n    </tr>\n  </table>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -276,9 +276,27 @@ var AdministratorComponent = /** @class */ (function () {
     }
     AdministratorComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.authService.findUsers().subscribe(function (data) {
-            _this.documents = data;
+        this.authService.getProfile().subscribe(function (profile) {
+            console.log(profile.user.username);
+            if (profile.user.username == 'kyin20') {
+                _this.authService.findUsers().subscribe(function (data) {
+                    _this.documents = data;
+                });
+            }
+            else {
+                _this.router.navigate(['/']);
+            }
         });
+    };
+    AdministratorComponent.prototype.godButtonClick = function () {
+        this.dataService.godButton().subscribe(function (data) {
+            if (data) {
+                window.location.reload();
+            }
+        }, function (err) {
+            console.log(err);
+        });
+        window.location.reload();
     };
     AdministratorComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1948,6 +1966,10 @@ var DataService = /** @class */ (function () {
         var headers = new Headers();
         headers.append("Content-Type", 'application/json');
         return this.http.post('http://localhost:3000/users/readrequests/' + id, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    DataService.prototype.godButton = function () {
+        return this.http.post('http://localhost:3000/users/godbutton')
             .map(function (res) { return res.json(); });
     };
     DataService.prototype.requestHelp = function (user) {

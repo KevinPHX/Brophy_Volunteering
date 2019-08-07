@@ -18,18 +18,27 @@ count: Number;
   constructor(private dataService: DataService, private authService:AuthService, private http: Http, private router:Router) { }
 
   ngOnInit() {
-    this.authService.findUsers().subscribe(data => {
-      this.documents = data
+    this.authService.getProfile().subscribe(profile => {
+      console.log(profile.user.username)
+      if (profile.user.username == 'kyin20') {
+        this.authService.findUsers().subscribe(data => {
+          this.documents = data
+        })
+      } else {
+        this.router.navigate(['/'])
+      }
     })
   }
-  //
-  // userRequestCount(username): number{
-  //   this.dataService.userAcceptedRequestsCount(username).subscribe(data => {
-  //     this.count = data
-  //     // console.log(data)
-  //     return this.count
-  //   })
-  // }
+  godButtonClick(){
+    this.dataService.godButton().subscribe(data => {
+      if (data) {
+        window.location.reload();
+      }
+    }, err=> {
+      console.log(err);
+    })
+    window.location.reload();
+  }
 
 
 }

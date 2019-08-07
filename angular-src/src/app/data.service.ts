@@ -73,7 +73,10 @@ export class DataService implements OnInit {
     return this.http.post('http://localhost:3000/users/readrequests/' + id, {headers:headers})
     .map(res => res.json());
   }
-
+  godButton(){
+    return this.http.post('http://localhost:3000/users/godbutton')
+    .map(res => res.json());
+  }
   requestHelp(user){
     return this.authService.getProfile().flatMap(profile => {
       this.user = profile.user;
