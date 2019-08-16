@@ -24,6 +24,10 @@ const TutorSchema = mongoose.Schema({
     type:String,
     require: true
   },
+  tutorgrade: {
+    type:String,
+    require: true
+  },
   type: {
     type:String,
     require: true

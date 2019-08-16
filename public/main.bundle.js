@@ -237,7 +237,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/administrator/administrator.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd {\n    border-bottom: 1px solid #000000;\n    text-align: left;\n    padding: 8px;\n    width: 33%;\n}\n\nth {\n  text-align: left;\n  padding: 8px;\n  width: 33%;\n}\n\n\n\n</style>\n<h2 class='page-header'>Administrator</h2>\n<a class='btn btn-primary' (click)='godButtonClick()' value = \"godbutton\">Reset and Update</a>\n<div class=\"data-list\">\n  <table>\n    <tr>\n      <th><h3>Name</h3></th>\n      <th><h3>Grade</h3></th>\n      <th><h3>Requests Accepted</h3></th>\n    </tr>\n  </table>\n  <div *ngFor=\"let docs of documents\">\n    <table>\n    <tr>\n      <td><h4>{{docs.firstname}} {{docs.lastname}}</h4></td>\n      <td><h4>{{docs.grade}}</h4></td>\n      <td><h4>{{docs.requests}}</h4></td>\n    </tr>\n  </table>\n  </div>\n</div>\n"
+module.exports = "<style>\ntable {\n    font-family: arial, sans-serif;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntd {\n    border-bottom: 1px solid #000000;\n    text-align: left;\n    padding: 8px;\n    width: 33%;\n}\n\nth {\n  text-align: left;\n  padding: 8px;\n  width: 33%;\n}\n\n\n\n</style>\n<h2 class='page-header'>Administrator</h2>\n<button class=\"btn btn-primary\" (click)=\"myModal.open()\">Reset and Update</button>\n<modal #myModal>\n  <modal-content>\n    <h3>Do you wish to reset and update? This is a permanent change</h3>\n  </modal-content>\n  <modal-footer>\n    <button class=\"btn btn-primary\" (click)=\"myModal.close()\">No</button><button class='btn btn-primary' (click)='godButtonClick()' value = \"godbutton\">Reset and Update</button>\n  </modal-footer>\n</modal>\n<div class=\"data-list\">\n  <table>\n    <tr>\n      <th><h3>Name</h3></th>\n      <th><h3>Grade</h3></th>\n      <th><h3>Requests Accepted</h3></th>\n    </tr>\n  </table>\n  <div *ngFor=\"let docs of documents\">\n    <table>\n    <tr>\n      <td><h4>{{docs.firstname}} {{docs.lastname}}</h4></td>\n      <td><h4>{{docs.grade}}</h4></td>\n      <td><h4>{{docs.requests}}</h4></td>\n    </tr>\n  </table>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -278,7 +278,7 @@ var AdministratorComponent = /** @class */ (function () {
         var _this = this;
         this.authService.getProfile().subscribe(function (profile) {
             console.log(profile.user.username);
-            if (profile.user.username == 'kyin20') {
+            if (profile.user.username == 'kyin20' || profile.user.username == 'test') {
                 _this.authService.findUsers().subscribe(function (data) {
                     _this.documents = data;
                 });
@@ -1529,7 +1529,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/request/request.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class='page-header'>Request A Tutor</h2>\n<form (submit)='requestHelp()'>\n  <div class='form-group'>\n    <h4>Subject</h4>\n    <input type='text' class='form-control' [(ngModel)]='subject' name='subject' placeholder=\"i.e. Algebra I\">\n    <h4>Topic</h4>\n    <input type='text' class='form-control' [(ngModel)]='topic' name='topic' placeholder=\"i.e. Polynomials\">\n    <h4>Additional Information</h4>\n    <input type='text' class='form-control' [(ngModel)]='addinfo' name='addinfo'>\n  </div>\n  <input type='submit' class='btn btn-primary'  value='Submit'><a class='btn btn-default' [routerLink]=\"['/dashboard']\" value = \"Cancel\">Cancel</a>\n</form>\n"
+module.exports = "<h2 class='page-header'>Request A Tutor</h2>\n<form (submit)='requestHelp()'>\n  <div class='form-group'>\n    <h4>Subject</h4>\n    <input type='text' class='form-control' [(ngModel)]='subject' name='subject' placeholder=\"i.e. Algebra I\">\n    <h4>Topic</h4>\n    <input type='text' class='form-control' [(ngModel)]='topic' name='topic' placeholder=\"i.e. Polynomials\">\n    <h4>Additional Information</h4>\n    <input type='text' class='form-control' [(ngModel)]='addinfo' name='addinfo'>\n  </div>\n  <input type='submit' class='btn btn-primary'  value='Submit'><a class='btn btn-default' [routerLink]=\"['/dashboard']\" value = \"Cancel\">Cancel</a> or find available tutors <a href = \"https://calendar.google.com/calendar/embed?src=tutoring%40brophyprep.org&ctz=America%2FPhoenix\">here</a>\n</form>\n"
 
 /***/ }),
 

@@ -22,7 +22,15 @@ th {
 
 </style>
 <h2 class='page-header'>Administrator</h2>
-<a class='btn btn-primary' (click)='godButtonClick()' value = "godbutton">Reset and Update</a>
+<button class="btn btn-primary" (click)="myModal.open()">Reset and Update</button>
+<modal #myModal>
+  <modal-content>
+    <h3>Do you wish to reset and update? This is a permanent change</h3>
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="myModal.close()">No</button><button class='btn btn-primary' (click)='godButtonClick()' value = "godbutton">Reset and Update</button>
+  </modal-footer>
+</modal>
 <div class="data-list">
   <table>
     <tr>

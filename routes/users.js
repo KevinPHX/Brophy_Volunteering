@@ -163,6 +163,54 @@ router.post('/godbutton', function (req, res, next){
   function(err) {
   if (err) res.send(err);
   });
+  db.collection('users').update(
+    {},
+    {$set: {rating:0}},
+  function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutor').remove({tutorgrade : '12'}, function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutoree').remove({tutoreegrade : '12'}, function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutor').update(
+    {tutorgrade:"9"},
+    {$set: {tutorgrade:"10"}},
+  function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutor').update(
+    {tutorgrade:"10"},
+    {$set: {tutorgrade:"11"}},
+  function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutor').update(
+    {tutorgrade:"11"},
+    {$set: {tutorgrade:"12"}},
+  function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutoree').update(
+    {tutoreegrade:"9"},
+    {$set: {tutoreegrade:"10"}},
+  function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutoree').update(
+    {tutoreegrade:"10"},
+    {$set: {tutoreegrade:"11"}},
+  function(err) {
+  if (err) res.send(err);
+  });
+  db.collection('tutoree').update(
+    {tutoreegrade:"11"},
+    {$set: {tutoreegrade:"12"}},
+  function(err) {
+  if (err) res.send(err);
+  });
 })
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -348,6 +396,7 @@ router.post('/accept/:id/:email', function ( req, res, next){
                       timeaccept: "" + month + "/" + date1.getDate() + "/" + date1.getFullYear() + " " + date1.getHours() + ":" + minutes,
                       tutorname: tutor.firstname + " " + tutor.lastname,
                       tutorusername: tutor.username,
+                      tutorgrade: tutor.grade,
                       type: "Completed",
                       subject: tutoree.subject,
                       topic: tutoree.topic,

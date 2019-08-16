@@ -20,7 +20,7 @@ count: Number;
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => {
       console.log(profile.user.username)
-      if (profile.user.username == 'kyin20') {
+      if (profile.user.username == 'kyin20' || profile.user.username == 'test') {
         this.authService.findUsers().subscribe(data => {
           this.documents = data
         })
