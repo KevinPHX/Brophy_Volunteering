@@ -133,26 +133,29 @@ router.post('/update', (req, res, next) => {
 })
 
 router.post('/godbutton', function (req, res, next){
-  db.collection('users').remove({grade: "12"}, function(err){
+  db.collection('users').remove({grade: "12"}, { multi: true }, function(err){
       if(err){
           res.send(err);
       }
   });
   db.collection('users').update(
-    {grade : "9"},
-    {$set: {grade:"10"}},
+    {grade : "11"},
+    {$set: {grade:"12"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('users').update(
     {grade : "10"},
     {$set: {grade:"11"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('users').update(
-    {grade : "11"},
-    {$set: {grade:"12"}},
+    {grade : "9"},
+    {$set: {grade:"10"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
@@ -160,54 +163,62 @@ router.post('/godbutton', function (req, res, next){
   db.collection('users').update(
     {},
     {$set: {requests:0}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('users').update(
     {},
     {$set: {rating:0}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
-  db.collection('tutor').remove({tutorgrade : '12'}, function(err) {
+  db.collection('tutor').remove({tutorgrade : '12'}, { multi: true }, function(err) {
   if (err) res.send(err);
   });
-  db.collection('tutoree').remove({tutoreegrade : '12'}, function(err) {
+  db.collection('tutoree').remove({tutoreegrade : '12'}, { multi: true }, function(err) {
   if (err) res.send(err);
   });
   db.collection('tutor').update(
     {tutorgrade:"9"},
     {$set: {tutorgrade:"10"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('tutor').update(
     {tutorgrade:"10"},
     {$set: {tutorgrade:"11"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('tutor').update(
     {tutorgrade:"11"},
     {$set: {tutorgrade:"12"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('tutoree').update(
     {tutoreegrade:"9"},
     {$set: {tutoreegrade:"10"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('tutoree').update(
     {tutoreegrade:"10"},
     {$set: {tutoreegrade:"11"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('tutoree').update(
     {tutoreegrade:"11"},
     {$set: {tutoreegrade:"12"}},
+    { multi: true },
   function(err) {
   if (err) res.send(err);
   });
