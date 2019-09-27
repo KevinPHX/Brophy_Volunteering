@@ -181,8 +181,8 @@ router.post('/godbutton', function (req, res, next){
   if (err) res.send(err);
   });
   db.collection('tutor').update(
-    {tutorgrade:"9"},
-    {$set: {tutorgrade:"10"}},
+    {tutorgrade:"11"},
+    {$set: {tutorgrade:"12"}},
     { multi: true },
   function(err) {
   if (err) res.send(err);
@@ -195,15 +195,15 @@ router.post('/godbutton', function (req, res, next){
   if (err) res.send(err);
   });
   db.collection('tutor').update(
-    {tutorgrade:"11"},
-    {$set: {tutorgrade:"12"}},
+    {tutorgrade:"9"},
+    {$set: {tutorgrade:"10"}},
     { multi: true },
   function(err) {
   if (err) res.send(err);
   });
   db.collection('tutoree').update(
-    {tutoreegrade:"9"},
-    {$set: {tutoreegrade:"10"}},
+    {tutoreegrade:"12"},
+    {$set: {tutoreegrade:"11"}},
     { multi: true },
   function(err) {
   if (err) res.send(err);
@@ -216,8 +216,8 @@ router.post('/godbutton', function (req, res, next){
   if (err) res.send(err);
   });
   db.collection('tutoree').update(
-    {tutoreegrade:"11"},
-    {$set: {tutoreegrade:"12"}},
+    {tutoreegrade:"9"},
+    {$set: {tutoreegrade:"10"}},
     { multi: true },
   function(err) {
   if (err) res.send(err);
