@@ -202,8 +202,8 @@ router.post('/godbutton', function (req, res, next){
   if (err) res.send(err);
   });
   db.collection('tutoree').update(
-    {tutoreegrade:"12"},
-    {$set: {tutoreegrade:"11"}},
+    {tutoreegrade:"11"},
+    {$set: {tutoreegrade:"12"}},
     { multi: true },
   function(err) {
   if (err) res.send(err);
