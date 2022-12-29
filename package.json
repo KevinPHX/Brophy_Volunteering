@@ -42,7 +42,7 @@
     "randomatic": "^3.0.0",
     "randombytes": "^2.0.6",
     "request": "^2.88.0",
-    "webpack": "^3.0.0"
+    "webpack": "^5.75.0"
   },
   "author": "Kevin Yin",
   "license": "ISC",
